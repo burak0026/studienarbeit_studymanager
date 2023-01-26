@@ -1,0 +1,4 @@
+[submodule "MY-APP"]
+	path = MY-APP
+	url = git@github.com:burak0026/MY-APP.git
+	branch = master
