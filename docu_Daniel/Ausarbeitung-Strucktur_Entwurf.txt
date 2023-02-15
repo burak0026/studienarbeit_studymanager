@@ -4,6 +4,7 @@
 	- Problemstellung
 	- Idee
 	- Geplante Umsetzung
+	- React
 
 - Die Vorbereitungen:
 	- Recherche (bücher lesen)
@@ -11,7 +12,7 @@
 
 - Umsetztung
 	- Webseite Erstellen
-	(- Docker)
+	- Docker
 	(- PWA)
 
 - Datenerhebung
