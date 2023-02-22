@@ -1,0 +1,29 @@
+- Abstract
+
+- Einleitung:
+	- Problemstellung
+	- Idee
+	- Geplante Umsetzung
+	- React
+
+- Die Vorbereitungen:
+	- Recherche (bücher lesen)
+	- React lernen
+
+- Umsetztung
+	- Webseite Erstellen
+	- Docker
+	(- PWA)
+
+- Datenerhebung
+	- Gegebenheiten
+	- Datenerhebung
+	- Erwartungen
+
+- Datenauswerung
+	- Überblick über die Datenen
+	- Ausagekraft
+	- Auswertung
+
+- Abschluss / Ausblick / Was müsste man noch machen
+- Fazit
