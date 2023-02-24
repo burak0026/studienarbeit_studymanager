@@ -38,13 +38,9 @@
 %% Angaben zur Arbeit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\Autor}{Max Mustermann}
-\newcommand{\MatrikelNummer}{4711}
-\newcommand{\Kursbezeichnung}{tinf17b3}
-
-\newcommand{\FirmenName}{Firmenname}
-\newcommand{\FirmenStadt}{Stadt}
-\newcommand{\FirmenLogoDeckblatt}{\fbox{\includegraphics[width=3cm]{lion}}}
+\newcommand{\Autor}{Burak Özkan und Daniel Schomburg}
+\newcommand{\MatrikelNummer}{}
+\newcommand{\Kursbezeichnung}{Tinf30B3}
 
 % Falls es kein Firmenlogo gibt:
 %  \newcommand{\FirmenLogoDeckblatt}{}
@@ -55,23 +51,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Wird auf dem Deckblatt und in der Erklärung benutzt:
-\newcommand{\Was}{Projekt-/Studien-/Bachleorarbeit}
-%\newcommand{\Was}{Projektrarbeit}
-%\newcommand{\Was}{Studienarbeit}
-%\newcommand{\Was}{Bachleorarbeit}
+\newcommand{\Was}{Studienarbeit}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\Titel}{\LaTeX-Vorlage für diverse Ausarbeitungen\\--\\oder so ähnlich}
-\newcommand{\AbgabeDatum}{1. April 2090}
+\newcommand{\Titel}{DHBW-Star App}
+\newcommand{\AbgabeDatum}{22. Mai 2023}
 
-\newcommand{\Dauer}{12 Wochen}
+\newcommand{\Dauer}{XX Wochen}
 
 % \newcommand{\Abschluss}{Bachelor of Engineering}
 \newcommand{\Abschluss}{Bachelor of Science}
 
 \newcommand{\Studiengang}{Informatik / Informationstechnik}
-% \newcommand{\Studiengang}{Informatik / Angewandte Informatik}
 
 \hypersetup{%%
   pdfauthor={\Autor},
@@ -102,7 +94,7 @@
 \begin{titlepage}
 \begin{center}
 \vspace*{-2cm}
-\FirmenLogoDeckblatt\hfill\includegraphics[width=4cm]{dhbw-logo}\\[2cm]
+\hfill\includegraphics[width=4cm]{dhbw-logo}\\[2cm]
 {\Huge \Titel}\\[1cm]
 {\Huge\scshape \Was}\\[1cm]
 {\large für die Prüfung zum}\\[0.5cm]
@@ -116,13 +108,10 @@
 \vfill
 \end{center}
 \begin{tabular}{l@{\hspace{2cm}}l}
-Bearbeitungszeitraum	         & \Dauer 			\\
-Matrikelnummer	                 & \MatrikelNummer		\\
-Kurs			         & \Kursbezeichnung		\\
-Ausbildungsfirma	         & \FirmenName			\\
-			         & \FirmenStadt			\\
-Betreuer der Ausbildungsfirma	 & \BetreuerFirma		\\
-Gutachter der Studienakademie	 & \BetreuerDHBW		\\
+Bearbeitungszeitraum	        & \Dauer 			\\
+Matrikelnummer	                & \MatrikelNummer	\\
+Kurs			         		& \Kursbezeichnung	\\
+Gutachter der Studienakademie	& \BetreuerDHBW	  	\\
 \end{tabular}
 \end{titlepage}
 
@@ -133,15 +122,44 @@ Gutachter der Studienakademie	 & \BetreuerDHBW		\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
-Dieses \LaTeX-Dokument kann als Vorlage für einen Praxis- oder Projektbericht, eine Studien- oder
-Bachelorarbeit dienen.
+Fortschritte in der Digitalisierung läuteten eine neue Ära in der Hochschulbildung ein
+und veränderten die Art und Weise, wie Studierende ihre Bildungserfahrungen
+gestalten. In dieser Situation ist es wichtig, dass Studierende jederzeit Zugriff auf
+Informationen zu Lehrveranstaltungen, Prüfungen, Veranstaltungen etc. haben. Die
+Gemeinsame Staatliche Hochschule Baden-Württemberg (DHBW) Karlsruhe ist eine
+der führenden deutschen Hochschulen mit dem Ziel, Studierende umfassend zu
+informieren. Diese Studienarbeit beschreibt die Entwicklung einer App, die Probleme
+mit Informationen der DHBW Karlsruhe identifiziert und die Zentralisierung aller
+Informationen auf der App.
 
-Zusammengestellt von Prof.\,Dr.\,Jürgen Vollmer \email{juergen.vollmer@dhbw-karlsruhe.de}\\
-\url{https://www.karlsruhe.dhbw.de}. Die jeweils aktuellste Version dieses \LaTeX-Paketes ist immer
-auf der \emph{FAQ-Seite} des Studiengangs Informatik zu finden:
-\url{https://www.karlsruhe.dhbw.de/inf/studienverlauf-organisatorisches.html} $\to$ \emph{Formulare und Vorlagen}.
+Es wurden umfangreiche Recherchen durchgeführt, um aktuelle Fragestellungen zu
+identifizieren, die in den von der DHBW Karlsruhe zur Durchführung des Projekts
+bereitgestellten Informationen enthalten sind. Zusätzlich wurden die App-
+Anforderungen definiert und ein Prototyp entwickelt. Um die Benutzerfreundlichkeit
+und Funktionalität der App zu evaluieren, wurde eine Studentenbefragung
+durchgeführt.
 
-\centering Stand \verb+$Date: 2020/03/13 15:07:45 $+
+Die App bietet Studenten eine Reihe von Funktionen, darunter Zugriff auf alle
+relevanten Informationen, einfache Navigation durch verschiedene Kurse und die
+Möglichkeit, Feedback zu geben und Probleme zu melden. Feedback wird in Echtzeit
+an die zuständige Abteilung weitergeleitet, um eine schnellstmögliche Lösung zu
+ermöglichen. Durch die zentrale Sammlung aller Informationen in der App haben die
+Studierenden schnellen und einfachen Zugriff auf alle relevanten Informationen.
+Die Implementierung der App brachte viele Vorteile, darunter eine verbesserte
+Benutzerfreundlichkeit und den Zugriff auf alle relevanten Informationen an einem
+Ort. Die Schüler haben Zugang zu einer Vielzahl von Informationen, damit sie ihre
+Bildungserfahrung besser gestalten können. Eine Feedback-Funktion ermöglicht es
+den Schülern, Probleme zu melden und Verbesserungen vorzuschlagen, um die
+bereitgestellten Informationen zu verbessern.
+
+Eine App zur Erkennung von Problemen mit Informationen der DHBW Karlsruhe und
+zur Zentralisierung aller Informationen in der App ist ein wertvolles Instrument zur
+Verbesserung des Informationsangebots der Hochschule. Die App ist einfach zu
+bedienen und bietet Schülern umfassende Informationen, die ihnen helfen, ihre
+Bildungserfahrung zu gestalten. Darüber hinaus bietet die Feedback-Funktion den
+Studierenden eine Plattform, um ihr Feedback und ihre Vorschläge zur Verbesserung
+des Informationsangebots der DHBW Karlsruhe zu teilen.
+
 \end{abstract}
 
 \newpage
@@ -184,11 +202,11 @@ auf der \emph{FAQ-Seite} des Studiengangs Informatik zu finden:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 
-\include{changelog}
+%\include{changelog}
 
 \newpage
-\addcontentsline{toc}{chapter}{Liste der ToDo's}
-\listoftodos[Liste der ToDo's]
+%\addcontentsline{toc}{chapter}{Liste der ToDo's}
+%\listoftodos[Liste der ToDo's]
 
 
 \end{document}
