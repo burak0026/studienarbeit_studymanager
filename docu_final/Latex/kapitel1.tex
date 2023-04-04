@@ -1,169 +1,32 @@
-\chapter{Einführung}
-In diesem Kapitel werden die Grundlagen der verwendeten Werkzeuge sowie die Grundladen erläutert.
+\chapter{Einleitung}
+Die Digitalisierung hat in den letzten Jahren die Hochschullandschaft grundlegend verändert. Immer mehr Bildungsinstitutionen setzen auf digitale Informationsangebote, um Studierende, Mitarbeiter und andere Interessenten über aktuelle Entwicklungen, Veranstaltungen und andere wichtige Informationen auf dem Laufenden zu halten. Die Duale Hochschule Baden-Württemberg (DHBW) Karlsruhe ist keine Ausnahme. Mit ihrer langjährigen Erfahrung als Hochschule für angewandte Wissenschaften hat die DHBW Karlsruhe eine Vielzahl von Informationsangeboten entwickelt, um den Bedürfnissen ihrer Nutzer gerecht zu werden. Trotzdem können bei der Bereitstellung von Informationen für eine große Nutzergruppe Herausforderungen auftreten.
 
-\section{Hintergrund und Motivation}
-In den letzten Jahren hat sich die Webentwicklung stark verändert und Webanwendungen haben sich zu umfangreichen und komplexen Systemen entwickelt. Eine der wichtigsten Anforderungen an eine moderne Webanwendung ist eine reaktionsfähige Benutzeroberfläche, die eine nahtlose Benutzererfahrung bietet.
+\section{Hintergrund und Kontext}
+Die Duale Hochschule Baden-Württemberg (DHBW) Karlsruhe ist eine der größten Hochschulen für angewandte Wissenschaften in Deutschland. Mit über 8.000 Studierenden und mehr als 1.000 Mitarbeitern bietet die DHBW Karlsruhe ein breites Spektrum an Studiengängen in verschiedenen Fachbereichen an. Um den Anforderungen ihrer Nutzer gerecht zu werden, hat die DHBW Karlsruhe in den letzten Jahren eine Vielzahl von Informationsangeboten entwickelt, wie z.B. die Webseite, die Intranet-Plattform und verschiedene soziale Medien.
+Trotz dieser Informationsangebote können jedoch Herausforderungen bei der Bereitstellung von Informationen für Studierende auftreten. Zum Beispiel können Informationen nicht immer auf den ersten Blick leicht zugänglich sein oder die Kommunikation kann nicht immer effektiv gestaltet werden. Daher ist es wichtig, die Bedürfnisse der Nutzer zu verstehen und Lösungen zu finden, um die Informationsbereitstellung zu optimieren.
 
-React wurde 2011 von Facebook entwickelt, um mit diesem Problem umzugehen und ist heute eine der beliebtesten Frontend-Technologien. Die Motivation hinter React war es, eine Lösung für die Herausforderungen bei der Entwicklung von Webanwendungen zu finden, insbesondere für die Komplexität und die Schwierigkeiten bei der Wartung von Code.
-
-Ein weiterer wichtiger Faktor, der zur Entwicklung von React beigetragen hat, ist die Nachfrage nach einer schnelleren Benutzeroberfläche. Einige der älteren Methoden zur Erstellung von Benutzeroberflächen waren zeitaufwändig und beeinträchtigten die Benutzererfahrung. React wurde entwickelt, um diese Herausforderungen zu bewältigen und eine schnellere Benutzeroberfläche zu bieten.
 
 \section{Überblick über React}
-React ist eine JavaScript-Bibliothek, die für die Erstellung von Benutzeroberflächen verwendet wird. Sie wurde von Facebook entwickelt und ist Open-Source. React zeichnet sich durch eine deklarative Syntax, eine effektive Verwaltung des Zustands und eine leistungsstarke Wiederverwendbarkeit von Komponenten aus. React unterscheidet sich von anderen Frontend-Technologien, da es auf einem komponentenbasierten Ansatz basiert. Dies bedeutet, dass Webanwendungen in kleine, wiederverwendbare Komponenten aufgeteilt werden, die unabhängig voneinander erstellt und gewartet werden können. Dies erleichtert nicht nur die Entwicklung von Webanwendungen, sondern verbessert auch deren Wartbarkeit.
-
-Darüber hinaus hat React die Entwicklung von Single-Page-Applications (SPA) erleichtert, die es den Nutzern ermöglichen, mit der Anwendung zu interagieren, ohne die Seite neu zu laden. Dies ist ein weiterer Faktor, der zur Popularität von React beigetragen hat.
-
-\section{These oder Fragestellung}
-Dieser Aufsatz gibt einen umfassenden Überblick über die Grundlagen, die Verwendung und die fortgeschrittenen Themen in React. Darüber hinaus werden bewährte Praktiken in der React-Entwicklung, ein Vergleich mit anderen Frontend-Technologien und ein Ausblick auf die Zukunft von React behandelt.
-
-\section{Grundlagen von React}
-\subsection{Was ist React?}
-React ist eine Open-Source-JavaScript-Bibliothek, die für die Entwicklung von Benutzeroberflächen und -anwendungen verwendet wird. Sie wurde 2011 von Facebook entwickelt und wird heute von vielen großen Unternehmen wie Instagram, Airbnb und Netflix verwendet. React hat sich als eine der beliebtesten Frontend-Technologien etabliert und wird aufgrund ihrer Leistungsfähigkeit, Flexibilität und Benutzerfreundlichkeit geschätzt.
-
-React basiert auf einem komponentenbasierten Ansatz, bei dem Webanwendungen in kleine, wiederverwendbare Komponenten aufgeteilt werden. Diese Komponenten können unabhängig voneinander erstellt und gewartet werden, was die Entwicklung von Webanwendungen erleichtert und die Wartbarkeit verbessert. React verwendet auch eine Virtual-DOM-Technologie, die eine schnellere Aktualisierung von Benutzeroberflächen ermöglicht.
-
-
-\subsection{Virtual DOM}
-Das Virtual Document Object Model (DOM) ist eine Technologie, die von React verwendet wird, um die Leistungsfähigkeit und Reaktionsfähigkeit von Webanwendungen zu verbessern. Der DOM ist eine Baumstruktur, die die Darstellung einer HTML-Seite repräsentiert. Wenn Änderungen an der Benutzeroberfläche einer Anwendung vorgenommen werden, muss der Browser den gesamten DOM neu berechnen und aktualisieren, um die Änderungen anzuzeigen. Dies kann zu einer Verzögerung bei der Aktualisierung der Benutzeroberfläche und einer langsameren Leistung führen.
-
-Das Virtual DOM von React ist eine abstrakte Repräsentation des DOM und eine Alternative dazu, Änderungen direkt auf dem tatsächlichen DOM vorzunehmen. Stattdessen werden Änderungen an einem virtuellen DOM vorgenommen und dann verglichen, um nur die tatsächlich geänderten Teile des DOM zu aktualisieren. Dadurch wird die Leistung verbessert und die Aktualisierung der Benutzeroberfläche beschleunigt.
-
-
-\subsection{Komponenten und Props}
-Komponenten sind das Herzstück von React und bilden die Grundlage für die Entwicklung von Webanwendungen. Eine Komponente ist eine wiederverwendbare Einheit, die eine bestimmte Funktionalität enthält und in eine größere Anwendung integriert werden kann. Eine Komponente kann eine ganze Anwendung oder nur einen Teil davon darstellen.
-
-Komponenten können in verschiedene Arten unterteilt werden, wie z.B. Funktionale Komponenten und Klassenkomponenten. Funktionale Komponenten sind Funktionen, die als Komponente dienen, während Klassenkomponenten auf einer JavaScript-Klasse basieren und über einen Zustand (State) verfügen.
-
-Props (kurz für Eigenschaften) sind Werte, die von einer Komponente an eine andere Komponente übergeben werden können. Sie werden von Elternkomponenten an Kindkomponenten weitergegeben und können zum Anpassen des Verhaltens und der Darstellung von Komponenten verwendet werden. Props können auch genutzt werden, um Daten von der API oder von anderen Datenquellen abzurufen und an die Komponenten weiterzugeben.D. State
-
-
-\subsection{State}
-In React ist "state" ein Objekt, das die Daten enthält, die das Verhalten und die Darstellung von UI-Komponenten steuern. State ist eine der wichtigsten Funktionen von React, da es es ermöglicht, auf Benutzerinteraktionen und andere Ereignisse in Echtzeit zu reagieren.
-
-State ist im Wesentlichen eine Momentaufnahme des Zustands einer Komponente zu einem bestimmten Zeitpunkt. Es kann sich im Laufe der Zeit ändern, wenn bestimmte Aktionen ausgeführt werden, wie z.B. ein Klick auf eine Schaltfläche oder eine Eingabe in ein Textfeld.
-
-State wird innerhalb einer Komponente definiert und kann von anderen Komponenten innerhalb derselben App nicht direkt manipuliert werden. Stattdessen wird es über Props (Eigenschaften) weitergegeben, die von einer Komponente an eine andere weitergegeben werden können.
-
-Das Ändern des Zustands einer Komponente führt dazu, dass sich die Darstellung der Komponente automatisch aktualisiert, da React das Virtual DOM verwendet, um nur die Teile der Benutzeroberfläche zu aktualisieren, die tatsächlich geändert wurden. Dadurch wird die Performance optimiert und die App läuft schneller.
-
-In React gibt es zwei Arten von Komponenten: Funktionskomponenten und Klassenkomponenten. In Funktionskomponenten wird State mithilfe von Hooks definiert, während in Klassenkomponenten das "this.state"-Attribut verwendet wird.
-
-Zusammenfassend lässt sich sagen, dass State ein zentrales Konzept in React ist, das es ermöglicht, auf Benutzerinteraktionen in Echtzeit zu reagieren und die Darstellung von UI-Komponenten automatisch zu aktualisieren. Es ist ein mächtiges Werkzeug, das die Entwicklung von interaktiven und reaktionsfähigen UIs vereinfacht.
-
-
-\section{Verwendung von React}
-\subsection{Einrichtung von React}
-Die Einrichtung von React ist relativ einfach. Zunächst benötigt man Node.js, das eine JavaScript-Laufzeitumgebung bereitstellt. Dann kann man mithilfe von npm (Node Package Manager) React und alle erforderlichen Abhängigkeiten installieren.
-
-Um eine neue React-App zu erstellen, kann man das Befehlszeilen-Tool "create-react-app" verwenden, das automatisch eine Standardstruktur für eine React-App erstellt. Dies beinhaltet alle erforderlichen Konfigurationsdateien und einen Standardcode, der die erste Komponente enthält. Mit diesem Werkzeug kann man schnell und einfach eine neue React-App einrichten, ohne sich um die Details der Konfiguration kümmern zu müssen.
-
-
-\subsection{Komponentenentwicklung}
-In React ist alles eine Komponente. Eine Komponente ist eine unabhängige Einheit, die sich aus HTML-Code, JavaScript-Code und möglicherweise auch CSS-Code zusammensetzt. Die Komponenten können wiederverwendet werden und machen die Entwicklung von UIs sehr modular.
-
-Um eine neue Komponente zu erstellen, definiert man eine JavaScript-Funktion oder -Klasse, die den HTML-Code und den JavaScript-Code enthält. Eine Komponente kann auch eine Reihe von Unter-Komponenten enthalten, die in derselben Weise definiert werden.
-
-Eine wichtige Konzeption in React ist das Konzept der "Props". Props sind Eigenschaften, die von einer übergeordneten Komponente an eine untergeordnete Komponente übergeben werden können. Diese Eigenschaften können Text, Zahlen oder Funktionen sein und ermöglichen eine leistungsstarke Kommunikation zwischen Komponenten. Durch die Verwendung von Props kann man komplexe UIs erstellen, indem man einzelne Komponenten wiederverwendet und sie zu einem größeren Ganzen kombiniert.
-
-
-\subsection{Ereignisbehandlung}
-In React kann man auf Benutzerinteraktionen reagieren, indem man Ereignisse behandelt. Ereignisse in React sind im Wesentlichen JavaScript-Funktionen, die ausgelöst werden, wenn der Benutzer eine Aktion ausführt, wie z.B. einen Klick auf eine Schaltfläche oder eine Eingabe in ein Textfeld.
-
-Um auf ein Ereignis zu reagieren, definiert man eine Funktion, die aufgerufen wird, wenn das Ereignis ausgelöst wird. Diese Funktion kann dann Änderungen am Zustand der Komponente vornehmen, die dazu führen, dass die Darstellung der Komponente aktualisiert wird.
-
-
-\subsection{JSX}
-JSX ist eine Erweiterung von JavaScript, die es ermöglicht, HTML-ähnliche Elemente direkt in den JavaScript-Code einzufügen. JSX ist in erster Linie dafür konzipiert, das Erstellen von UI-Komponenten einfacher und intuitiver zu gestalten.
-
-Mit JSX kann man direkt in den JavaScript-Code HTML-Elemente wie "div", "p", "input" usw. einfügen. Diese Elemente können dann in einer Komponente verwendet werden, um die Darstellung des UIs zu definieren.
-
-JSX wird während der Kompilierung in standardmäßiges JavaScript konvertiert. Dies bedeutet, dass man mit JSX effektiv JavaScript-Code schreibt, der eine klare und verständliche Syntax hat.
-
-\section{Fortgeschrittene Themen in React}
-React ist eine flexible und erweiterbare Bibliothek, die eine Vielzahl von fortgeschrittenen Techniken und Tools bietet, um die Entwicklung von Anwendungen zu erleichtern und zu verbessern. In diesem Abschnitt werden einige dieser fortgeschrittenen Themen in React vorgestellt.
-
-\subsection{Redux oder Context API}
-Redux ist ein unidirektionales Datenflussmuster, das häufig zusammen mit React verwendet wird, um den Zustand der Anwendung effektiv zu verwalten. Es ermöglicht eine klare Trennung von Zustand und Ansicht, was die Wartbarkeit und Skalierbarkeit von Anwendungen verbessert.
-
-In Redux besteht der Zustand der Anwendung aus einem einzigen, unveränderlichen Objekt, das über Reducer-Funktionen aktualisiert wird. Komponenten können den Zustand über Connectors abrufen und ihre Ansicht aktualisieren, wenn sich der Zustand ändert.
-
-Ein ähnliches Muster bietet die Context API, die Teil der React-Bibliothek ist. Es ermöglicht die Übermittlung von Daten durch den Komponentenbaum ohne manuelle Übergabe von Props. Ähnlich wie bei Redux gibt es einen zentralen Zustand, auf den Komponenten zugreifen können.
-
-Die Wahl zwischen Redux und Context API hängt von den spezifischen Anforderungen der Anwendung ab. Redux eignet sich besser für Anwendungen mit einem großen und komplexen Zustand, während die Context API für Anwendungen mit einem kleineren und einfacheren Zustand geeignet ist.
-
-\subsection{React Router}
-React Router ist eine Bibliothek, die das Routing in React-Anwendungen vereinfacht. Es ermöglicht die Navigation zwischen verschiedenen Ansichten in der Anwendung und ermöglicht eine klare Trennung von Routing-Logik und Ansicht.
-
-React Router bietet verschiedene Routing-Komponenten, die in der Hierarchie von Routen definiert werden können. Sie können auch Parameter und Abfragezeichenfolgen in URLs verarbeiten, um dynamische Routing-Logik zu ermöglichen.
-
-\subsection{React Hooks}
-React Hooks sind eine Funktionserweiterung in React, die es Entwicklern ermöglicht, Zustand und andere Funktionen in funktionalen Komponenten zu verwalten, anstatt in Klassenkomponenten.
-
-Hooks ermöglichen es Entwicklern, Logik wie Zustandsverwaltung, Seiteneffekte und Ereignisbehandlung in funktionalen Komponenten zu verwenden. Dadurch werden Komponenten einfacher zu schreiben und zu testen, da sie weniger komplex sind und weniger Boilerplate-Code erfordern.
-
-Zu den Hooks gehören useState, useEffect, useContext und andere, die spezielle Funktionen in funktionalen Komponenten ermöglichen. Durch die Verwendung von Hooks können Entwickler auch den Code wiederverwendbarer und lesbarer machen.
-
-\subsection{Serverseitiges Rendern}
-Serverseitiges Rendern, auch bekannt als Server-Side-Rendering (SSR), ist ein fortschrittliches Konzept in der Webentwicklung, das in React Anwendungen verwendet wird. Es ermöglicht die Erstellung von Anwendungen, die sowohl auf dem Server als auch auf dem Client gerendert werden können.
-
-Das SSR-Konzept besteht darin, dass beim ersten Laden einer Anwendung vom Server eine HTML-Seite generiert und zurück an den Client gesendet wird, anstatt dass die Anwendung vollständig vom Browser geladen und ausgeführt wird. Dadurch wird die Ladezeit der Anwendung verkürzt, da der Server die HTML-Seite an den Client sendet und dieser sie sofort rendern kann, ohne auf die gesamte JavaScript-Datei warten zu müssen.
-
-Die Verwendung von SSR in React hat viele Vorteile, wie zum Beispiel eine schnellere Initialisierung der Anwendung, eine bessere Suchmaschinenoptimierung (SEO) und eine bessere Barrierefreiheit (Accessibility). Die SEO-Optimierung wird durch die Möglichkeit ermöglicht, dass Suchmaschinen die HTML-Seiten indexieren können, was bei reinen JavaScript-Anwendungen schwierig ist.
-
-In React können SSR-Anwendungen mithilfe von speziellen Bibliotheken wie Next.js oder Gatsby.js erstellt werden. Diese Bibliotheken bieten eine einfache Möglichkeit, SSR in eine React-Anwendung zu integrieren. Sie bieten auch viele zusätzliche Funktionen wie automatische Code-Splitting, serverseitiges Caching und eine bessere Leistung.
-
-Serverseitiges Rendern ist jedoch nicht immer die beste Wahl für jede Anwendung. Es hängt von den Anforderungen und den Zielen der Anwendung ab. In einigen Fällen kann es besser sein, auf Client-seitiges Rendern (CSR) zu setzen, insbesondere wenn die Anwendung viele dynamische Inhalte enthält oder wenn die Daten sehr häufig aktualisiert werden.
-
-Insgesamt bietet das Konzept des serverseitigen Renderings eine interessante Möglichkeit, um React-Anwendungen zu optimieren und eine bessere Nutzererfahrung zu bieten. Es ist jedoch wichtig, die Vor- und Nachteile sorgfältig abzuwägen, um die beste Entscheidung für die jeweilige Anwendung zu treffen.
-
-
-\section{Best Practices in React-Entwicklung}
-React ist eine sehr beliebte JavaScript-Bibliothek für die Entwicklung von Benutzeroberflächen, die von Facebook entwickelt wurde. React ermöglicht die Entwicklung von deklarativen und modularen UI-Komponenten, die auf einfache Weise zu komplexen Anwendungen zusammengesetzt werden können. Um sicherzustellen, dass React-Anwendungen effektiv und sicher sind, gibt es einige Best Practices, die Entwickler befolgen sollten.
-
-\subsection{Modularität und Wiederverwendbarkeit von Komponenten}
-Eine der wichtigsten Best Practices in React ist die Modularität und Wiederverwendbarkeit von Komponenten. Durch die Aufteilung der Anwendung in mehrere kleine, spezialisierte Komponenten kann die Codebasis leichter gewartet und erweitert werden. Jede Komponente sollte nur eine bestimmte Funktionalität ausführen und sollte einfach wiederverwendet werden können. Ein weiterer Vorteil der Modularen Entwicklung von Komponenten besteht darin, dass das Debugging und die Tests einfacher werden.
-
-\subsection{Testen von React-Anwendungen}
-Das Testen von React-Anwendungen ist von entscheidender Bedeutung, um sicherzustellen, dass sie zuverlässig und fehlerfrei sind. React bietet verschiedene Tools und Bibliotheken für das Testen, wie z.B. Jest, Enzyme oder React Testing Library. Die Verwendung von Tests in jeder Phase der Entwicklung hilft, Probleme frühzeitig zu identifizieren und zu lösen. Die Tests sollten alle Funktionen und Komponenten abdecken und sicherstellen, dass sie wie erwartet funktionieren.
-
-\subsection{Performance-Optimierung}
-Die Performance-Optimierung ist ein weiterer wichtiger Aspekt der React-Entwicklung. Da React-Anwendungen auf dem Virtual DOM basieren, sind sie von Natur aus schneller als traditionelle JavaScript-basierte Anwendungen. Es gibt jedoch einige bewährte Methoden, um die Leistung weiter zu verbessern, wie z.B. die Verwendung von Lazy Loading, Memoization, Optimierung von Abhängigkeiten, Code-Splitting und Reduzierung von unnötigen Renderings.
-
-\subsection{Sicherheit und React}
-Sicherheit ist ein wesentlicher Bestandteil jeder Anwendungsentwicklung, und React ist hier keine Ausnahme. Entwickler sollten sicherstellen, dass ihre Anwendungen gegen alle möglichen Sicherheitsbedrohungen geschützt sind, wie z.B. XSS-Attacken oder SQL-Injektionen. Um dies zu erreichen, sollten sie sicherstellen, dass die Anwendung sicher programmiert ist, z.B. durch die Verwendung von Escaping-Methoden und Validierungen.
-
-Insgesamt gibt es viele Best Practices in der React-Entwicklung, um sicherzustellen, dass Anwendungen zuverlässig, effektiv und sicher sind. Modularität und Wiederverwendbarkeit von Komponenten, Testen von Anwendungen, Performance-Optimierung und Sicherheit sind nur einige der wichtigsten Aspekte, die Entwickler beachten sollten. Durch die Einhaltung dieser Best Practices können Entwickler sicherstellen, dass ihre React-Anwendungen effektiv und sicher sind.
-
-\section{Vergleich mit anderen Frontend-Technologien}
-\subsection{Vor- und Nachteile von React im Vergleich zu Angular und Vue.js}
-React, Angular und Vue.js sind die drei gängigsten JavaScript-Frameworks für die Entwicklung von Webanwendungen. Jede Technologie hat ihre Vor- und Nachteile, und es ist wichtig zu verstehen, wie sie sich voneinander unterscheiden, um die beste Entscheidung für ein bestimmtes Projekt zu treffen.
-
-Einer der größten Vorteile von React ist die hohe Geschwindigkeit und die optimale Performance. Dies ist hauptsächlich auf die Virtual-DOM-Technologie zurückzuführen, die eine schnelle Aktualisierung des UI ermöglicht. Im Vergleich dazu nutzt Angular eine bidirektionale Datenbindung, die zwar einfach zu verwenden ist, aber zu einer langsameren Leistung führen kann. Vue.js hingegen verwendet eine virtuelle DOM-Technologie ähnlich wie React, aber der Fokus liegt mehr auf dem Template-Rendering.
-
-Ein weiterer Vorteil von React ist seine Flexibilität und Erweiterbarkeit. Es ist sehr einfach, React in bestehende Anwendungen zu integrieren und auch die React-Komponenten können leicht in anderen Projekten wiederverwendet werden. Im Vergleich dazu bietet Angular ein umfangreiches Framework, das eine höhere Lernkurve aufweist und nicht so leicht in andere Anwendungen zu integrieren ist. Vue.js ist ähnlich wie React sehr flexibel und leichtgewichtig.
-
-In Bezug auf die Dokumentation ist React sehr gut dokumentiert und bietet eine große Community, die bei Fragen und Problemen unterstützt. Angular ist auch gut dokumentiert, aber es gibt weniger Ressourcen und Unterstützung von der Community. Vue.js hingegen ist noch relativ neu, hat aber eine schnell wachsende Community und eine gute Dokumentation.
-
-\subsection{Verwendung von React in größeren Projekten}
-React wird häufig für große Projekte verwendet, da es gut skaliert und eine große Community hat. Durch die Verwendung von Bibliotheken wie Redux oder der Context API wird die Strukturierung von Code und die Verwaltung von Zuständen erleichtert. Einige der bekanntesten Unternehmen, die React verwenden, sind Facebook, Instagram, Netflix und Airbnb. React ermöglicht es auch, schnell Prototypen zu erstellen, da es einfach zu verwenden und zu erlernen ist.
-
-\subsection{Zukunft von React}
-Die Zukunft von React sieht vielversprechend aus, da es eine große und wachsende Community hat und ständig weiterentwickelt wird. Das Team hinter React arbeitet ständig an Verbesserungen und Updates, um die Leistung zu optimieren und die Entwicklung von Webanwendungen zu erleichtern. Es gibt auch viele neue Tools und Bibliotheken, die auf React aufbauen und die Entwicklung von Webanwendungen noch schneller und einfacher machen sollen.
-
-\section{Fazit}
-React ist eine beliebte JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen. Es zeichnet sich durch seine effektive Nutzung von Virtual DOM, die Modularität seiner Komponenten, die einfache Verwendung von JSX und eine umfangreiche Bibliothek von Drittanbieter-Komponenten aus. React bietet Entwicklern auch die Möglichkeit, fortgeschrittene Funktionen wie Server-Side-Rendering, React Hooks und das Redux- oder Context-API zu verwenden.
-
-Im Vergleich zu anderen Frontend-Technologien wie Angular und Vue.js bietet React viele Vorteile. Es ist einfacher zu erlernen und bietet eine bessere Performance als Angular. Im Gegensatz dazu ist Vue.js eine kleinere Bibliothek, die besser geeignet ist für kleinere Projekte. In Bezug auf die Verwendung von React in größeren Projekten bietet die Verwendung von Tools wie TypeScript und Code-Splitting eine bessere Möglichkeit, große Projekte zu handhaben.
-
-\subsection{Ausblick auf weitere Entwicklungen in React}
-Die Zukunft von React sieht vielversprechend aus. Es gibt viele Entwicklungen, die darauf abzielen, die Entwicklung von React-Anwendungen zu verbessern. Einige dieser Entwicklungen umfassen:
-
-React Server Components - Dieses Feature soll in Zukunft eine noch schnellere Performance von React-Apps auf dem Server ermöglichen.
-
-React Native - Mit React Native können Entwickler plattformübergreifende mobile Anwendungen entwickeln. Es ist einfach, React-Kenntnisse auf mobile Anwendungen zu übertragen.
-
-React Concurrent Mode - Concurrent Mode ist ein neues Feature, das die Benutzererfahrung in React-Anwendungen verbessert. Mit Concurrent Mode können Entwickler flüssigere Animationen und schnelleres Rendern erstellen.
-
-React 18 - Die kommende Version von React wird voraussichtlich viele neue Funktionen und Verbesserungen enthalten, darunter Unterstützung für React Server Components und verbesserte Tools zur Code-Optimierung.
-
-Zusammenfassend bietet React Entwicklern viele Möglichkeiten, ansprechende Benutzeroberflächen schnell und effektiv zu erstellen. Mit den fortgeschrittenen Funktionen und Tools, die in React verfügbar sind, können Entwickler auch komplexe Anwendungen erstellen. React hat sich als wichtige Technologie im Bereich der Frontend-Entwicklung etabliert und wird voraussichtlich auch in Zukunft eine wichtige Rolle spielen
+Das Ziel dieser Studienarbeit ist es, eine Alternative zum aktuellen Informationsangebot der DHBW Karlsruhe zu entwickeln und alle Informationen auf einer zentralen Plattform zu sammeln. Hierfür sollen die Bedürfnisse der Nutzer analysiert und die Informationsangebote der DHBW Karlsruhe auf ihre Effektivität hin überprüft werden.
+Im Rahmen der Studienarbeit sollen folgende Forschungsfragen beantwortet werden:
+\begin{itemize}
+	\item Welche Informationen sind für die Nutzer der DHBW Karlsruhe am wichtigsten?
+	\item Welche Informationsquellen sind für die Nutzer am effektivsten?
+	\item Wie können die Probleme im Informationsangebot behoben werden?
+	\item Welche Features sollte die neue Informationsplattform haben?
+	\item Welche Möglichkeiten gibt es zur Verbesserung?
+\end{itemize}
+
+\section{Methodik und Vorgehen}
+Um die Zielsetzung der Studienarbeit zu erreichen und die gestellten Forschungsfragen zu beantworten, werden verschiedene Methoden und Techniken angewendet. Hierzu zählen die Sammlung von Erfahrungen aus Sicht der Studierenden, die Analyse von persönlichen Erfahrungsgesprächen sowie die Entwicklung eines alternativen Informationsangebotsprototyps.
+Die Analyse der Erfahrungen erfolgt durch die Auswertung von Feedback-Quellen wie beispielsweise Umfragen oder persönliche Gespräche mit Studierenden.Dabei wird besonders auf wiederkehrende Probleme und Schwierigkeiten im Umgang mit den Informationsangeboten geachtet. Diese Erfahrungen sind wichtig, um die Bedürfnisse und Erwartungen der Studierenden an das Informationsangebot der DHBW Karlsruhe besser zu verstehen und mögliche Verbesserungsmöglichkeiten zu identifizieren.
+Nach der Analyse der Erfahrungen wird ein alternativer Informationsangebotsprototyp entwickelt, der auf den Bedürfnissen und Erwartungen der Studierenden basiert. Der Prototyp wird an einer ausgewählten Gruppe von Studierenden getestet, um Feedback und Verbesserungsvorschläge zu sammeln.
+Insgesamt ist die Einbeziehung der Erfahrungen und des Feedbacks von Studierenden ein wichtiger Schritt, um ein Informationsangebot zu entwickeln, das den Bedürfnissen der Nutzer entspricht und eine positive Nutzererfahrung bietet.
+
+
+\section{Beitrag und Relevanz}
+Die Entwicklung einer alternativen Informationsplattform für die DHBW Karlsruhe und die anschließende Evaluation der Nutzererfahrung durch eine Umfrage haben das Ziel, die Informationsbereitstellung für Studierende und andere Interessenten zu optimieren. Die Ergebnisse dieser Studienarbeit haben somit den potentiellen Nutzen, die Effektivität der Informationsbereitstellung zu erhöhen und damit die Zufriedenheit der Nutzer zu steigern. Diese Studienarbeit leistet somit einen Beitrag zur Verbesserung des Informationsangebots an Bildungseinrichtungen und trägt damit auch zu einer erfolgreichen und zufriedenstellenden Hochschulerfahrung bei.
+
+\section{Aufbau der Studienarbeit}
+
+Die Studienarbeit ist in mehrere Kapitel unterteilt, die sich mit verschiedenen Aspekten des Themas befassen. Nach der Einleitung werden in Kapitel 2 die theoretischen Grundlagen erläutert, die für die Entwicklung der App relevant sind. Kapitel 3 beschreibt die angewandten Methoden und Techniken für die Umsetzung, während in Kapitel 4 die Datenerhebung im Fokus liegt. Das Kapitel 5 befasst sich mit der Auswertung der Daten und abschließend fasst Kapitel 6 die wichtigsten Ergebnisse zusammen und gibt einen Ausblick auf zukünftige Entwicklungen.
