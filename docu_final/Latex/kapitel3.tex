@@ -6,5 +6,95 @@ Test test tes tes
 
 \section{Docker}
 
+Damit die React App vom System unabhängig funktioniert, läuft sie in einem Docker Container. Dadurch werden Probleme mit unterschiedlichen Programmversionen und Konfigurationen verhindert.
+Da die geplante Mensa API nicht funktioniert, wird als Alternative ein Container verwendet, der die Mensa API lokal bereitstellt.
+
+\subsection{Die Dockerfile, compose.yaml und .env Dateien}
+
+Für den React Containers wird ein Dockerfile Datei benötigt. In dieser wird beschrieben wie der Container zusammengebaut wird. Ein neuer Container kann auf vorhanden aufbauen oder komplett neu erstellt werden.
+
+\begin{lstlisting}[language=vhdl,
+	frame=single,           % Ein Rahmen um den Code
+	framexleftmargin=15pt,  % Rahmen link von den Zahlen
+	style=algoBericht,
+	label={Dockerfile},
+	captionpos=b           % Caption unter den Code setzen
+	caption={Dockerfile für DHBW-Star}]
+FROM node:current-alpine
+
+RUN mkdir /reactApp
+WORKDIR /reactApp
+
+# Install React and dependencies
+COPY . .
+RUN npm init -y
+RUN npm install express cors axios
+RUN npm install
+RUN npm install ical.js
+RUN npm install -D concurrently
+RUN yarn build
+
+# Start both React app and proxy server
+CMD ["npm", "run", "start:all"]
+\end{lstlisting}
+
+Für DHBD Star wird der node Container von Dockerhub.com als Basis verwendet. Dieser besteht aus \emph{alpine}, einem minimalistischen Betriebssystem und NoteJS welcher für React benötigt wird.
+Mit \emph{COPY} werden die Dateien des Projekts in den Container kopiert und mit \emph{RUN npm init} und \emph{RUN npm install} werden die benötigten Pakete für NoteJS installiert.
+Zum Schluss wird mit \emph{RUN yarn build} das React Projekt gebaut und mit \emph{CMD ["npm", "run", "start:all"]} React und der Proxy gestartet. Der \emph{CMD} befehlt wird beim erstellen eines Container aus dem Image, immer ausgeführt. 
+
+Damit die Mensa API und React zusammen starten, wird die \emph{compose.yaml} Datei und Docker compose verwendet.
+
+\begin{lstlisting}[language=vhdl,
+	frame=single,           % Ein Rahmen um den Code
+	framexleftmargin=15pt,  % Rahmen link von den Zahlen
+	style=algoBericht,
+	label={Dockerfile},
+	captionpos=b           % Caption unter den Code setzen
+	caption={compose.yaml für DHBW-Star}]
+version: '3.9'
+services:
+  react-app:
+    build:
+      dockerfile: ./Dockerfile
+    tags:
+      - "react:latest"
+    ports:
+      - "3003:3003"
+      - "3002:3002"
+    volumes:
+      - ./src:/reactApp/src:ro
+      - ./proxy-server.js:/reactApp/proxy-server.js:ro
+      - ./.env:/reactApp/.env:ro
+  mensa-api:
+    image: meyfa/ka-mensa-api
+    ports:
+      - "3001:8080"
+    environment:
+      - MENSA_CORS_ALLOWORIGIN=*
+\end{lstlisting}
+
+Für den Service \emph{react-app} (DHBW Star) wird mit \emph{build} die oben beschrieben Dockerfiel Datei angeben. Somit baut der Befehl \emph{docker compose --build} ein neue Image mit dem React Projekt.
+Der \emph{tags} gibt dem Container einen eindeutigen Namen.
+Mit \emph{ports} werden die Ports vom Proxy(3002) und React (3003) nach außen frei gegeben.
+Damit bei kleineren Änderungen im Projekt nicht immer ein neues Image erstellt werden muss, wird mit \emph{volums} die Projektdateien in den laufenden Container eingebunden.
+Für die \emph{mensa-api} wird noch die Umgebungsvariable \emph{MENSA\_CORS\_ALLOWORIGIN=*} definiert.
+
+Um die Container an unterschiedliche Gegebenheiten des Systems anpassen zu können, ohne etwas am React Projekt ändern zu müssen, bietet docer compose die Möglichkeit Umgebungsvariablen aus einer \emph{.env} Datei heraus zu definieren.
+Da diese nicht teil von git sein sollte, wird eine \emph{.env\_template} angelegt. In dies stehen sind die verwendeten Umgebungsvariable mit Beispielen drin.
+
+\begin{lstlisting}[language=vhdl,
+	frame=single,           % Ein Rahmen um den Code
+	framexleftmargin=15pt,  % Rahmen link von den Zahlen
+	style=algoBericht,
+	label={Dockerfile},
+	captionpos=b           % Caption unter den Code setzen
+	caption={.env für DHBW-Star}]
+REACT_APP_MENSA_ADDRESS=http://localhost:3001 
+REACT_APP_PROXY_ADDRESS=http://localhost:3002
+PROXY_PORT=3002
+PORT=3003
+\end{lstlisting}
+
+\emph{REACT\_APP\_MENSA\_ADDRESS} und \emph{REACT\_APP\_PROXY\_ADDRESS} sind die Adressen der Services. Dies müssen mit der in \emph{compose.yaml} definierten Ports übereinstimmen. 
 
 \section{Webserver}
