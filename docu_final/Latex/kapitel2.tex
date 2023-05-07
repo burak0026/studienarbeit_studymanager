@@ -5,49 +5,70 @@
 %%  -*- coding: utf-8 -*-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \chapter{Grundlagen}
 In diesem Kapitel werden die Grundlagen der verwendeten Werkzeuge sowie die theoretischen Grundladen erläutert.
 \section{React}
 In diesem Unterkapitel werden die Grundlagen von React näher beschrieben um ein grundlegendes Verständnis zu generieren.
 
+1.2 Überblick über React
+React ist eine populäre JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen und bietet zahlreiche Vorteile für Entwickler. Um React effektiv nutzen zu können, wird empfohlen, fundierte JavaScript-Kenntnisse zu haben[1].
+
+Einige der Hauptmerkmale von React sind:
+
+Komponentenbasierte Architektur: React verwendet eine komponentenbasierte Architektur, die die Entwicklung modularer und wiederverwendbarer Benutzeroberflächen ermöglicht. Jede Komponente in React ist verantwortlich für einen bestimmten Teil der Benutzeroberfläche und kann unabhängig von den anderen Komponenten aktualisiert und gewartet werden.
+
+Einweg-Datenfluss: React verwendet einen einseitigen Datenfluss, der auch als "unidirektionaler Datenfluss" bezeichnet wird. Dies bedeutet, dass die Daten in einer React-Anwendung in einer einzigen Richtung fließen, was die Komplexität der Anwendung reduziert und die Vorhersagbarkeit des Verhaltens der Anwendung verbessert.
+
+Virtuelles DOM: React verwendet ein virtuelles DOM (Document Object Model), um Änderungen an der Benutzeroberfläche effizient zu verwalten. Das virtuelle DOM ist eine leichtgewichtige In-Memory-Repräsentation des tatsächlichen DOM und ermöglicht es React, Änderungen an der Benutzeroberfläche schnell zu berechnen und nur die tatsächlich geänderten Teile des DOM zu aktualisieren. Dies führt zu einer schnelleren Leistung und einer besseren Benutzererfahrung.
+
+Insgesamt bietet React eine leistungsstarke und flexible Lösung für die Erstellung von modernen Benutzeroberflächen und Webanwendungen, die leicht zu entwickeln, zu warten und zu skalieren sind
 \subsection{Hintergrund und Motivation}
-React ist eine JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen, die von Facebook entwickelt wurde und seit 2013 öffentlich verfügbar ist. Die Motivation für die Entwicklung von React lag in der Notwendigkeit, die Leistung und Skalierbarkeit von Facebooks eigenen Webanwendungen zu verbessern. Insbesondere wollten die Entwickler von Facebook eine Möglichkeit finden, große und komplexe Anwendungen zu erstellen, die schnell, reaktiv und einfach zu pflegen sind.
+React ist eine JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen, die von Facebook entwickelt wurde und seit 2013 öffentlich verfügbar ist.\cite{ReactGettingStarted} Die Hauptmotivation für die Entwicklung von React bestand darin, die Leistung und Skalierbarkeit von Facebooks eigenen Webanwendungen zu verbessern. Insbesondere suchten die Facebook-Entwickler nach einer Möglichkeit, große und komplexe Anwendungen zu erstellen, die schnell, reaktionsfreudig und einfach zu warten sind. React ermöglicht es Entwicklern, wiederverwendbare Komponenten zu erstellen, die einfach zu pflegen und zu aktualisieren sind. Darüber hinaus kann React für verschiedene Anwendungen eingesetzt werden, einschließlich Single-Page-Anwendungen, Mobile-Apps und serverseitige Anwendungen.
 
-In einem Blogbeitrag aus dem Jahr 2011, der von Jordan Walke, einem Entwickler bei Facebook, verfasst wurde, beschrieb er die Motivation für die Entwicklung von React wie folgt:
-
-"Wir haben erkannt, dass viele unserer bestehenden Werkzeuge für die Web-Entwicklung nicht dafür geeignet waren, große und komplexe Anwendungen zu entwickeln und zu warten. Wir mussten eine neue Art von Werkzeug entwickeln, die uns erlauben würde, Anwendungen zu erstellen, die schnell, reaktiv und einfach zu pflegen sind." \cite{react-why}
-
-React bietet viele Vorteile für Entwickler, darunter die Möglichkeit, wiederverwendbare Komponenten zu erstellen, die einfach zu warten und zu aktualisieren sind. Darüber hinaus kann React für eine Vielzahl von Anwendungen eingesetzt werden, einschließlich Single-Page-Anwendungen, Mobile-Apps und serverseitigen Anwendungen.
-
-\begin{center}
-	\includegraphics[width=0.3\textwidth]{react-logo.png}
-\end{center}
+\begin{figure}[htbp]
+	\centering
+	\fbox{\includegraphics[height=0.3\textheight]{images/react-logo}}
+	\caption{React-Logo}
+\end{figure}
 
 \subsection{Überblick über React}
 
-React ist eine beliebte JavaScript-Bibliothek, die zur Erstellung von Benutzeroberflächen verwendet wird. Wie in der offiziellen React-Dokumentation beschrieben wird, bietet React eine deklarative Syntax, um UI-Komponenten zu definieren und zu rendern. Diese Komponenten sind unabhängig voneinander und können wiederverwendet werden, um komplexe Benutzeroberflächen zu erstellen \cite{react-docs}.
+React ist eine bekannte JavaScript-Bibliothek, die zur Erstellung von Benutzeroberflächen verwendet wird und auf einem komponentenbasierten Ansatz basiert. Laut der offiziellen React-Dokumentation ermöglicht React eine deklarative Syntax, um UI-Komponenten zu definieren und zu rendern, die wiederverwendet werden können, um komplexe Benutzeroberflächen zu erstellen.\cite{ReactJS} 
 
-Wie auf \cite{makeuseof} beschrieben wird, gibt es mehrere Gründe, warum es sinnvoll ist, React zu erlernen. Einer der wichtigsten Gründe ist, dass React auf JavaScript basiert, was es für Entwickler, die bereits JavaScript beherrschen, einfacher macht, sich in React einzuarbeiten. Ein weiterer Grund ist, dass React auf einem komponentenbasierten Ansatz basiert, der es erleichtert, Webanwendungen in kleine, wiederverwendbare Komponenten aufzuteilen, die unabhängig voneinander erstellt und gewartet werden können \cite{makeuseof}.
+Es gibt mehrere Gründe, warum es sinnvoll ist, React zu erlernen. Ein wichtiger Grund ist, dass React auf JavaScript basiert und Entwicklern, die bereits JavaScript beherrschen, den Einstieg erleichtert. Ein weiterer Vorteil ist, dass React auf einem komponentenbasierten Ansatz basiert, der es einfacher macht, Webanwendungen in kleine, wiederverwendbare Komponenten aufzuteilen, die unabhängig voneinander erstellt und gewartet werden können.\cite{Kinsta} 
 
-Darüber hinaus bietet React eine effektive Verwaltung des Zustands und eine leistungsstarke Wiederverwendbarkeit von Komponenten, was zu einer schnelleren Entwicklung von Webanwendungen führt. Ein weiterer Vorteil von React ist, dass es eine große und engagierte Entwicklergemeinschaft gibt, die sich ständig weiterentwickelt und verbessert. Dies sorgt für eine hohe Verfügbarkeit von Lernressourcen und eine ständige Verbesserung der Bibliothek \cite{makeuseof}.
+Eine weitere Stärke von React ist die effektive Verwaltung des Zustands und die leistungsstarke Wiederverwendbarkeit von Komponenten. Dadurch wird die Entwicklung von Webanwendungen beschleunigt. Zudem gibt es eine engagierte Entwicklergemeinschaft, die sich ständig weiterentwickelt und verbessert, was zu einer hohen Verfügbarkeit von Lernressourcen und ständigen Verbesserungen der Bibliothek führt.\cite{Kinsta}
 
-Laut der Stack Overflow Umfrage 2021 ist React eine der beliebtesten Technologien im Bereich der Web-Frameworks. Dies zeigt, dass React von der Entwicklergemeinschaft aktiv genutzt und unterstützt wird \cite{stackoverflow-survey}.
+Die Beliebtheit von React in der Entwicklergemeinschaft zeigt sich auch in der Stack Overflow Umfrage 2021, bei der React als eine der beliebtesten Technologien im Bereich der Web-Frameworks genannt wurde.\cite{StackOverflowSurvey}
 
-Eine weitere Quelle auf \cite{makeuseof} betont auch die Bedeutung von React für die Entwicklung von Single-Page-Applications (SPA). React hat die Entwicklung von SPAs vereinfacht, indem es eine schnelle und nahtlose Benutzererfahrung ermöglicht, ohne dass die Seite neu geladen werden muss.
+React hat auch die Entwicklung von Single-Page-Applications vereinfacht, indem es eine schnelle und nahtlose Benutzererfahrung ermöglicht, ohne dass die Seite neu geladen werden muss.\cite{Kinsta}
 
-Zusammenfassend lässt sich sagen, dass React eine beliebte JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen ist, die auf einem komponentenbasierten Ansatz basiert und eine effektive Verwaltung des Zustands sowie eine leistungsstarke Wiederverwendbarkeit von Komponenten bietet. React hat die Entwicklung von Single-Page-Applications erleichtert und ist aufgrund seiner zahlreichen Vorteile eine wertvolle Fähigkeit für Webentwickler.
+Zusammenfassend ist React eine wertvolle Fähigkeit für Webentwickler, da es eine effektive Verwaltung des Zustands und eine leistungsstarke Wiederverwendbarkeit von Komponenten bietet und die Entwicklung von Single-Page-Applications vereinfacht. Die Beliebtheit von React in der Entwicklergemeinschaft unterstreicht zudem seine Bedeutung für die Webentwicklung.
 
 \subsection{Grundlagen über React}
 \subsubsection{Virtual DOM}
-Das Virtual Document Object Model (DOM) ist eine innovative Technologie, die von React verwendet wird, um die Leistungsfähigkeit und Reaktionsfähigkeit von Webanwendungen zu verbessern. Im Gegensatz zum herkömmlichen DOM, bei dem der Browser bei jeder Änderung den gesamten Baum neu berechnen und aktualisieren muss, arbeitet das Virtual DOM effizienter und reduziert die Verzögerungen bei der Aktualisierung der Benutzeroberfläche \cite{goswami2020}.
-React verwendet das Virtual DOM, um Änderungen an einer abstrakten Repräsentation des tatsächlichen DOM vorzunehmen und anschließend einen effizienten Vergleichsalgorithmus, genannt Reconciliation, durchzuführen \cite{reactinternals}. Dieser Algorithmus vergleicht das Virtual DOM mit dem tatsächlichen DOM und aktualisiert nur die tatsächlich geänderten Teile des DOM, wodurch die Leistung verbessert und die Aktualisierung der Benutzeroberfläche beschleunigt wird \cite{banks2016}.
+Das Virtual DOM ist ein zentrales Konzept von React, einer JavaScript-Programmbibliothek zur Erstellung von webbasierten Benutzeroberflächen\cite{ReactWikipedia}. Es handelt sich dabei um eine leichtgewichtige JavaScript-Darstellung des Document Object Model (DOM), die in deklarativen Web-Frameworks wie React, Vue.js und Elm verwendet wird \cite{VueJsAdesso}. Das Virtual DOM ermöglicht es React, minimale DOM-Operationen auszuführen, wenn die Benutzeroberfläche neu gerendert wird. Im Gegensatz zum tatsächlichen DOM ist das Virtual DOM eine Art abstrakte Kopie, die deutlich kleiner ist und auf das Nötigste an Informationen beschränkt.\cite{ReactWikipedia}
+
+Das Virtual DOM bietet mehrere Vorteile für die Entwicklung von Webanwendungen. Zum einen abstrahiert es manuelle DOM-Manipulationen vom Entwickler, was die Entwicklung von komplexen Benutzeroberflächen vereinfacht und zu einem vorhersehbareren Verhalten der Anwendung führt [1]. Zum anderen ermöglicht das Virtual DOM inkrementelles Rendering, was bedeutet, dass React nur die Komponenten rendert, die sich tatsächlich geändert haben \cite{ReactWikipedia}. Dies führt zu einer effizienteren Ausführung von Benutzeroberflächen-Updates und einer insgesamt schnelleren Anwendung.
+
+Das folgende Bild illustriert den Unterschied zwischen dem tatsächlichen DOM und dem Virtual DOM:
+
+
+\begin{figure}[htbp]
+	\centering
+	\fbox{\includegraphics[height=0.3\textheight]{images/virtualDom}}
+	\caption{Virtual-DOM}
+\end{figure}
+Das Bild zeigt schematisch, wie das Virtual DOM in React funktioniert. Zunächst wird eine virtuelle Darstellung des DOMs in Form eines Baumes erstellt. Bei Änderungen an der Benutzeroberfläche wird ein neuer Baum erstellt und mit dem vorherigen Baum verglichen. Dabei werden nur die Unterschiede zwischen den beiden Bäumen ermittelt. Anschließend werden nur die geänderten Elemente im tatsächlichen DOM aktualisiert. Dieser Prozess wird als Reconciliation bezeichnet \cite{ReactVirtualDOM}.
 
 \subsubsection{Komponenten und Props}
-Eine React-Komponente ist eine unabhängige, wiederverwendbare Einheit einer Benutzeroberfläche. Sie kann als Klasse oder als Funktion definiert werden. Komponenten können andere Komponenten enthalten und können selbst als Teil einer größeren Anwendung verwendet werden.
+React ist eine Bibliothek für die Entwicklung von Benutzeroberflächen, die auf dem Konzept von Komponenten und Props basiert. Eine React-Komponente ist eine eigenständige und wiederverwendbare Einheit einer Benutzeroberfläche, die entweder als Klasse oder als Funktion definiert werden kann. Komponenten können andere Komponenten enthalten und selbst als Teil einer größeren Anwendung verwendet werden \cite{ReactComponentsAndProps}.
 
-Komponenten werden durch Props (kurz für "Properties") konfiguriert. Props sind ein Weg, um Daten von einer Komponente zur anderen weiterzugeben. Sie werden als Objekt an die Komponente übergeben und können dort als Parameter verwendet werden. Props sind im Allgemeinen schreibgeschützt und können nicht direkt geändert werden \cite{easeout-blog}.
+Props (kurz für "Properties") sind ein wichtiger Mechanismus zur Konfiguration von React-Komponenten. Sie dienen zum Übergeben von Daten von einer Komponente zur anderen und werden als Objekt an die Komponente übergeben. Innerhalb der Komponente können Props als Parameter verwendet werden. Im Gegensatz zum State, der zur Änderung der Benutzeroberfläche innerhalb einer Komponente verwendet wird, sind Props schreibgeschützt und können nicht direkt geändert werden. Durch das Verwenden von Props können Komponenten einfach wiederverwendet werden, indem sie in verschiedenen Kontexten mit unterschiedlichen Props konfiguriert werden \cite{ReactComponentsAndProps}.
 
-Ein Beispiel für eine React-Komponente mit Props:
+Ein Beispiel für eine React-Komponente mit Props ist die Funktion \verb|Greeting|, die einen Gruß mit dem Namen des Benutzers anzeigt. Der Name wird als Prop an die Komponente übergeben und innerhalb der Funktion als Parameter verwendet. Hier ist das Codebeispiel:
 
 \begin{verbatim}
 	import React from 'react';
@@ -59,46 +80,57 @@ Ein Beispiel für eine React-Komponente mit Props:
 	export default Greeting;
 \end{verbatim}
 
-In diesem Beispiel definiert die Funktion \verb|Greeting| eine Komponente, die einen Gruß mit dem Namen des Benutzers anzeigt. Der Name wird als Prop an die Komponente übergeben und als Parameter verwendet.
+Alle React-Komponenten müssen sich im Bezug auf ihre Props als sogenannte "pure functions" verhalten \cite{ReactComponentsAndProps}. Das bedeutet, dass die Funktion der Komponente nur von ihren Props abhängen sollte und keine weiteren Seiteneffekte haben darf. Eine Komponente, die sich wie eine "pure function" verhält, ist leichter zu testen und zu warten.
 
-Props sind ein wichtiger Mechanismus zur Wiederverwendbarkeit von Komponenten. Eine Komponente kann in verschiedenen Kontexten verwendet werden, indem sie mit unterschiedlichen Props konfiguriert wird \cite{react-book}.
+Es gibt auch fortgeschrittene Konzepte im Zusammenhang mit Props, wie das Konzept des "Render Props". Hierbei handelt es sich um eine Technik zum Austauschen von Code zwischen React-Komponenten, bei der eine Komponente eine Funktion als Prop akzeptiert, die ein React-Element zurückgibt. Dadurch können Komponenten dynamisch wiederverwendet werden und die Codebasis der Anwendung wird vereinfacht\cite{ReactRenderProps}.
+
+Um mit React-Komponenten und Props zu arbeiten, gibt es verschiedene Möglichkeiten. Funktionskomponenten sind die einfachste Art, eine Komponente zu definieren, indem man eine JavaScript-Funktion schreibt. Klassenkomponenten bieten mehr Funktionen, wie den Zugriff auf den State, die Möglichkeit, Lifecycle-Methoden zu definieren und vieles mehr \cite{RunebookReactComponentsAndProps}.
+
+Insgesamt sind Komponenten und Props wichtige Konzepte in React, die Entwicklern helfen, wiederverwendbare Benutzeroberflächenkomponenten zu erstellen und die Effizienz der Entwicklung zu erhöhen. Durch das Verwenden von
 \subsubsection{State}
-Der State ist ein Objekt, das Daten enthält, die von einer Komponente verwaltet werden. Eine Komponente kann ihren State ändern und die Änderungen werden automatisch auf der Benutzeroberfläche aktualisiert. Der State kann als interner Speicher der Komponente betrachtet werden \cite{state-docs}.
+In React ist der "State" ein Objekt, das in einer Komponente definiert wird und Werte speichert, die zur Laufzeit der Anwendung verändert werden können. Der Zustand wird in der Regel verwendet, um die Darstellung der Benutzeroberfläche zu aktualisieren, wenn sich etwas ändert. Wenn der Zustand eines Komponentenobjekts geändert wird, wird die Methode "render()" aufgerufen, um die Änderungen in der Benutzeroberfläche anzuzeigen \cite{W3SchoolsReactState}.
 
-Ein Beispiel für eine React-Komponente mit State:
+Der Zustand wird oft als Schlüssel-Wert-Paar-Objekt definiert, wobei jeder Schlüssel eine Eigenschaft repräsentiert, die geändert werden kann, und jeder Wert den aktuellen Wert dieser Eigenschaft darstellt. State-Objekte können als eine Art Konfiguration betrachtet werden, die der Komponente zur Verfügung gestellt werden, um ihre Eigenschaften und ihr Verhalten zu steuern \cite{FreeCodeCampStateInReact}.
 
-\begin{verbatim}
-	import React, { Component } from 'react';
+Der Zustand ist ein Beobachtbares Objekt und kann somit verändert werden. In React-Komponenten kann der Zustand durch die Verwendung der "setState()" Funktion aktualisiert werden.
+
+Eine sorgfältige Verwaltung des Zustands in einer React-Anwendung ist wichtig, um Fehler zu vermeiden und die Leistung zu optimieren. Die Organisation des Zustands und die Datenfluss zwischen den Komponenten sollten gut durchdacht sein, um überflüssigen oder doppelten Zustand zu vermeiden \cite{ReactManagingState}.
+
+Hier ist ein Beispiel, das zeigt, wie der Zustand in React-Komponenten implementiert werden kann:
+
+\begin{lstlisting}[language=vhdl,
+	frame=single,           % Ein Rahmen um den Code
+	framexleftmargin=15pt,  % Rahmen link von den Zahlen
+	style=algoBericht,
+	label={Dockerfile},
+	captionpos=b           % Caption unter den Code setzen
+	caption={.env für DHBW-Star}]
+	import React, { useState } from "react";
 	
-	class Counter extends Component {
-		constructor(props) {
-			super(props);
-			this.state = { count: 0 };
+	function Example() {
+		// Initialisieren des State-Objekts
+		const [count, setCount] = useState(0);
+		
+		Erhoehen des Zaehlers, wenn der Button geklickt wird
+		function increaseCount() {
+			setCount(count + 1);
 		}
 		
-		increment() {
-			this.setState({ count: this.state.count + 1 });
-		}
-		
-		render() {
-			return (
-			<div>
-			<p>Count: {this.state.count}</p>
-			<button onClick={() => this.increment()}>Increment</button>
-			</div>
-			);
-		}
+		return (
+		<div>
+		<p>You clicked {count} times</p>
+		<button onClick={increaseCount}>Click me</button>
+		</div>
+		);
 	}
-	
-	export default Counter;
-\end{verbatim}
+\end{lslisting}
 
-In diesem Beispiel definiert die Klasse \verb|Counter| eine Komponente, die einen Zähler mit einem Button zum Inkrementieren anzeigt. Der Zählerwert wird im State gespeichert und bei jeder Änderung aktualisiert.
+In diesem Beispiel wird die \emph{useState()} -Hook verwendet, um den Zustand der Komponente zu initialisieren. Die Funktion \emph{useState()} gibt ein Array zurück, das den aktuellen Zustand und eine Funktion zur Aktualisierung des Zustands enthält. In diesem Fall wird der Zustand mit \emph{count} initialisiert und die Funktion \emph{setCount()} wird verwendet, um den Zustand zu aktualisieren. Wenn der Button geklickt wird, wird die \emph{increaseCount()} Funktion aufgerufen, die den Zähler erhöht und den Zustand mithilfe von \emph{setCount()} aktualisiert. Die Änderung des Zustands löst eine erneute Ausführung der Komponente aus, und die aktualisierten Werte werden in der Benutzeroberfläche angezeigt.
 
-Der State ist ein wichtiger Mechanismus zur Verwaltung von Daten in React-Komponenten. Durch das Aktualisieren des State können Komponenten auf Benutzerinteraktionen reagieren und ihre Darstellung aktualisieren \cite{w3schools}.
+
 \subsection{Verwendung von React}
 \subsubsection{Einrichtung von React}
-React ist eine Bibliothek für JavaScript, die von Facebook entwickelt wurde und zur Erstellung von Benutzeroberflächen eingesetzt wird. Um React in einem Projekt verwenden zu können, muss es zuerst eingerichtet werden. Die offizielle Dokumentation von React bietet eine ausführliche Anleitung zur Einrichtung von React \cite{ReactDocsSetup}.
+ React ist eine Bibliothek für JavaScript, die von Facebook entwickelt wurde und zur Erstellung von Benutzeroberflächen eingesetzt wird. Um React in einem Projekt verwenden zu können, muss es zuerst eingerichtet werden. Die offizielle Dokumentation von React bietet eine ausführliche Anleitung zur Einrichtung von React \cite{ReactDocsSetup}.
 
 Eine Möglichkeit, React in einem neuen Projekt zu installieren, besteht darin, ein neues Projektverzeichnis zu erstellen und dann das React-Paket über NPM zu installieren:
 
@@ -310,7 +342,7 @@ Insgesamt bleibt React eine der führenden Technologien in der Frontend-Entwickl
 
 \begin{wrapfigure}{l}{0.4\textwidth}
 \centering
-\fbox{\includegraphics[width=0.25\textwidth,angle=270]{lion}}
+\fbox{\includegraphics[width=0.25\textwidth,angle=270]{dhbw-logo}}
 \end{wrapfigure}
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
