@@ -1,0 +1,35 @@
+Um die DHBW Star Webseite Plattformunabhängig testen und betreiben können, entschieden wir uns für Docker. Dieser ist sowohl auf unseren Rechnern als auch auf dem Test Server installiert. Damit wurden Probleme durch die unterschiedlichen Plattformen entstehen konnten vermieden.
+
+\subsection{Docker Grundlagen}
+
+Docker ist eine freie Container basierte Virtualisierung Software unter der Apache-Lizenz.
+Docker kann eine Software mit all ihren benötigten Abhängigkeiten (z.B. Bibliotheken) in ein Containerimage packten. Dieses Image kann Docker unabhängig von der Plattform oder der vorhandenen Software ausführen. Dies Ermöglicht einen hohen Grad an Flexibilität und verhindert Probleme mit verschieden Versionen von Bibliotheken.
+
+\subsection{Docker Images und Container}
+Um ein Programm in Docker zu starten werden zwei Schritte benötigt.\\
+1. Ein Docker Images erzeugen.\\
+2. Image als Container Starten.\\
+Im ein Image zu erstellen wird meist ein Vorhandenes Image verwendet. Dockerhub.com biete eine Vielzahl an Images für alle möglichen Anwendungen an.
+In einer Datei mit den Namen Dockerfile kann mit \emph{FROM "imagename"} eins der Images einfach als Basis festgelegt werden. Danach können eigene Dateien kopiert oder Programme installiert bzw. Ausgeführt werden. Diese Änderungen sind dann in dem erzeugtem Image gespeichert.
+
+Wenn ein Image gestartet wird nennt Docker das einen Container.
+Beim Starten können noch Einstellungen festgelegt werden (z.B. Port Weiterleitung).
+Jedes Image kann beliebig oft als Container mit eigenen Einstellungen gestartet werden. So ist es möglich, das selbe Image mit unterschiedlicher Konfiguration gleichzeitig laufen zu lassen.
+
+\todo Quelle (docker doku?)
+
+\subsection{Docker Compose}
+Gehören zu einer Anwendung oder einem Service mehrere Container so bietet Docker Compose die Möglichkeit dies zu automatisieren. Dafür wird eine compose.yaml Datei angelegt. In dieser stehen die zu startenden Container und die dazugehörigen Konfigurationen.
+Auch das neu bauen eines Images ist möglich. Dadurch wird ein hoch automatisierter Arbeitsprozess ermöglicht.
+
+\subsection{Vor- und Nachteile von Docker}
+Docker ermöglicht durch seine flexible Abstraktion ein fast plattformunabhängigen betrieb von Software. Dies wird erreicht in dem Docker verschiedenen Ebenen von Abstraktionen verwendet um so für die Software eine einheitliche Umgebung zu garantieren. Es wir aber im Gegensatz zu Virtuellen Maschinen keine Hardware simuliert.
+
+
+Für Abstraktion werden allerdings mehr Ressourcen benötigt. Da teilweise ganze Betriebssysteme in einem Container laufen, kann ein einzelner Docker Container gern mal mehrere GB an Arbeitsspeicher benötigen.
+
+Zudem kann das bauen eines Containers je nach Rechenleistung einiges an zeit in Anspruch nehmen. Das kann vor allem beim entwickeln viel zeit kosten, wenn zum testen der Container mehrmals in kurzer Zeit gebaut werden muss.
+
+\subsection{Docker unter Windows}
+Um Docker unter Windows benutzen zu können muss WSL2 (Windows Subsystem for Linux 2) Installiert und Aktiviert sein.
+In diesem läuft dann der Docker Dienst. Docker Desktop ist eine Grafische Oberfläche mit der man den Dienst steuern kann um Container zu starten oder zu Stoppen.
