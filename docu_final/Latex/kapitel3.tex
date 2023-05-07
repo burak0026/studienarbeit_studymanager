@@ -81,6 +81,7 @@ Für die \emph{mensa-api} wird noch die Umgebungsvariable \emph{MENSA\_CORS\_ALL
 
 Um die Container an unterschiedliche Gegebenheiten des Systems anpassen zu können, ohne etwas am React Projekt ändern zu müssen, bietet docer compose die Möglichkeit Umgebungsvariablen aus einer \emph{.env} Datei heraus zu definieren.
 Da diese nicht teil von git sein sollte, wird eine \emph{.env\_template} angelegt. In dies stehen sind die verwendeten Umgebungsvariable mit Beispielen drin.
+React verlangt für alle Umgebungsvariablen, die in der App zur Verfügung stehen sollen, dass sie mit \emph{REACT\_APP\_} beginnen.
 
 \begin{lstlisting}[language=vhdl,
 	frame=single,           % Ein Rahmen um den Code
@@ -98,3 +99,11 @@ PORT=3003
 \emph{REACT\_APP\_MENSA\_ADDRESS} und \emph{REACT\_APP\_PROXY\_ADDRESS} sind die Adressen der Services. Dies müssen mit der in \emph{compose.yaml} definierten Ports übereinstimmen. 
 
 \section{Webserver}
+Damit das Projekt auch über das Internet erreichbar ist, wird ein Root-Webserver mit einer Domain Adresse verwendet. Auf diesem ist bereits Docker, Nginx und Certbot Installiert.
+Per github.com wird das Projekt auf den Server kopiert und die \emph{.env} Datei angepasst. Die Ports bleiben die Selben, nur das \emph{localhost} wird durch die Subdomains \emph{mensa.Domain} für den Mensa Container und \emph{ical.Domain} für den Proxy ersetzt.
+
+Damit die Container unter ihrer Subdomain erreichbar sind, müssen diese in der Nginx Konfiguriert werden. In der Datei \emph{.../sites-enabled/star.conf} wird für jeden Service mit \emph{proxy\_pass} eine Weiterleitung eingerichtet.
+Da auf dem Server bereits andere Webdienst laufen, ist Startseite unter der Subdomain \emph{star.Domain} erreichbar. Mit \emph{Certbot} werden noch SSL Zertifikate für alle Subdomains erstellt und automatisch eingerichtet.
+
+Nach dem Neustart von Nginx, steht DHBW Star für alle Tester zur Verfügung.
+
