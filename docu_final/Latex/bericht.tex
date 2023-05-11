@@ -10,13 +10,16 @@
 \documentclass[
    ngerman          % neue deutsche Rechtschreibung
   ,a4paper          % Papiergrösse
-% ,twoside          % Zweiseitiger Druck (rechts/links)
-% ,10pt             % Schriftgrösse
-  ,11pt
-% ,12pt
+%  ,twoside          % Zweiseitiger Druck (rechts/links)
+%  ,10pt             % Schriftgrösse
+%  ,11pt
+ ,12pt
   ,pdftex
 %  ,disable         % Todo-Markierungen auschalten
 ]{report}
+
+%\usepackage[fontsize=13pt]{scrextend}
+\usepackage{setspace}
 
 % Bitte die Codierung Ihrer Dateien auswählen:
 % \usepackage[latin1]{inputenc}    % Für UNIX mit ISO-LATIN-codierten Dateien
@@ -37,14 +40,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\Autor}{Burak Özkan und Daniel Schomburg}
-\newcommand{\MatrikelNummer}{}
+\newcommand{\MatrikelNummer}{9015631 und 6218975}
 \newcommand{\Kursbezeichnung}{Tinf20B3}
 
 % Falls es kein Firmenlogo gibt:
 %  \newcommand{\FirmenLogoDeckblatt}{}
 
-\newcommand{\BetreuerFirma}{Titel Vorname Nachname}
-\newcommand{\BetreuerDHBW}{Titel Vorname Nachname}
+%\newcommand{\BetreuerFirma}{Titel Vorname Nachname}
+\newcommand{\BetreuerDHBW}{Danie Lindner}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -56,7 +59,7 @@
 \newcommand{\Titel}{DHBW-Star App}
 \newcommand{\AbgabeDatum}{22. Mai 2023}
 
-\newcommand{\Dauer}{XX Wochen}
+%\newcommand{\Dauer}{ Wochen}
 
 % \newcommand{\Abschluss}{Bachelor of Engineering}
 \newcommand{\Abschluss}{Bachelor of Science}
@@ -110,7 +113,7 @@
 \vfill
 \end{center}
 \begin{tabular}{l@{\hspace{2cm}}l}
-Bearbeitungszeitraum	        & \Dauer 			\\
+%Bearbeitungszeitraum	        & \Dauer 			\\
 Matrikelnummer	                & \MatrikelNummer	\\
 Kurs			         		& \Kursbezeichnung	\\
 Gutachter der Studienakademie	& \BetreuerDHBW	  	\\
@@ -173,13 +176,14 @@ des Informationsangebots der DHBW Karlsruhe zu teilen.
 
 % Jetzt kommt der "eigentliche" Text
 \include{abk}              % Abkürzungsverzeichnis
+\begin{onehalfspace}
 \include{kapitel1}
 \include{kapitel2}
 \include{kapitel3}
 \include{kapitel4}
 \include{kapitel5}
 \include{kapitel6}
-
+\end{onehalfspace}
 
 % Ab hier beginnt der Anhang
 \appendix
