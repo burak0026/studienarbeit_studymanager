@@ -7,6 +7,7 @@
 
 
 
+
 \chapter{Grundlagen}
 In diesem Kapitel werden die Grundlagen der verwendeten Werkzeuge sowie die theoretischen Grundladen erläutert.
 \section{React}
@@ -219,7 +220,7 @@ Insgesamt ist JSX eine leistungsstarke Syntax, die die Arbeit mit React-Komponen
 React bietet eine Vielzahl von fortgeschrittenen Techniken und Bibliotheken, um komplexe Anwendungen zu entwickeln. Einige dieser Techniken sind Redux oder Context API, React Router, React Hooks und serverseitiges Rendern.
 \subsubsection{Redux oder Context API}
 React Redux und Context API sind zwei beliebte Bibliotheken, die React-basierte Anwendungen für das Datenflussmanagement verwenden können. Beide Bibliotheken dienen dem Zweck, den Zugriff auf Daten zu vereinfachen und den Anwendungsstatus effektiv zu verwalten.\\
-Redux ist eine Bibliothek, die den Anwendungszustand in einem zentralen Speicher speichert. Dies vereinfacht den Zugriff auf den anwendungsweiten Status und macht den Gesamtcode strukturierter. Redux bietet auch die Möglichkeit, den Status zu ändern, indem Aktionen ausgelöst werden, die den Status aktualisieren.\\
+Redux ist eine Bibliothek, die den Anwendungszustand in einem zentralen Speicher speichert. Dies vereinfacht den Zugriff auf den Anwendungsweiten Status und macht den Gesamtcode strukturierter. Redux bietet auch die Möglichkeit, den Status zu ändern, indem Aktionen ausgelöst werden, die den Status aktualisieren.\\\cite{scalablepath}
 Die folgende Abbildung zeigt das Datenmanagement in Redux:
 \begin{figure}[htbp]
 	\centering
@@ -227,9 +228,10 @@ Die folgende Abbildung zeigt das Datenmanagement in Redux:
 	\caption{Redux-Datenfluss}
 \end{figure}\\
 Der Zustand der Anwendung wird im Store gespeichert, der die Datenstruktur und die aktuellen Daten enthält. Die Komponenten erhalten den Zugriff auf den Zustand über das Connect-Modul, das es ihnen ermöglicht, auf die Daten zuzugreifen und sie in ihre Eigenschaften zu übertragen. Wenn ein Ereignis eintritt, das den Zustand ändert, wird eine Action ausgelöst, die eine Reducer-Funktion aufruft, um den Zustand im Store zu aktualisieren.\\
+
 Redux eignet sich besonders für Anwendungen mit vielen Komponenten und komplexen Datenstrukturen. Der Hauptvorteil von Redux besteht darin, dass das Datenflussmanagement einheitlich und leicht verständlich ist. Dies vereinfacht die Anwendungswartung erheblich, da Entwickler immer genau wissen, wo ihr Anwendungsstatus gespeichert ist und wie sie darauf zugreifen können.\\
 
-Die Kontext-API ist eine Redux-Alternative, mit der Entwickler  den Status in ihrer Komponentenhierarchie verwalten können. Die Kontext-API erleichtert den Zugriff auf den Status, indem sie ermöglicht, dass er in der gesamten Komponentenhierarchie weitergegeben wird. Im Gegensatz zu Redux ist die Context-API jedoch nicht gut für Anwendungen mit komplexen Datenstrukturen und  vielen Komponenten geeignet.\\
+Die Kontext-API ist eine Redux-Alternative, mit der Entwickler  den Status in ihrer Komponentenhierarchie verwalten können. Die Kontext-API erleichtert den Zugriff auf den Status, indem sie ermöglicht, dass er in der gesamten Komponentenhierarchie weitergegeben wird. Im Gegensatz zu Redux ist die Context-API jedoch nicht gut für Anwendungen mit komplexen Datenstrukturen und  vielen Komponenten geeignet.\\\cite{scalablepath}
 Die folgende Abbildung zeigt den Datenfluss in Context API:\\
 \begin{figure}[htbp]
 	\centering
@@ -237,7 +239,7 @@ Die folgende Abbildung zeigt den Datenfluss in Context API:\\
 	\caption{ContextApi-Datenfluss}
 \end{figure}\\
 Der Zustand wird in einer höheren Komponente gespeichert und durch die Prop-Drilling-Technik an untergeordnete Komponenten übermittelt. Dadurch können untergeordnete Komponenten den Zustand der höheren Komponenten ändern und somit auch den Zustand der Anwendung beeinflussen.\\
-Die Kontext-API eignet sich am besten für Anwendungen, bei denen der Zustand nicht zu komplex und die Anzahl der Komponenten begrenzt ist. Der Hauptvorteil der Kontext-API besteht darin, dass sie eine einfachere und schnellere Möglichkeit bietet, auf den Status zuzugreifen, ohne einen globalen Speicher einrichten und verwalten zu müssen.\\
+Die Kontext-API eignet sich am besten für Anwendungen, bei denen der Zustand nicht zu komplex und die Anzahl der Komponenten begrenzt ist. Der Hauptvorteil der Kontext-API besteht darin, dass sie eine einfachere und schnellere Möglichkeit bietet, auf den Status zuzugreifen, ohne einen globalen Speicher einrichten und verwalten zu müssen.\\\cite{scalablepath}
 Insgesamt eignet sich Redux  für große Anwendungen mit vielen Komponenten und  komplexen Datenstrukturen, während die Context-API für kleine Anwendungen mit einer begrenzten Anzahl von Komponenten und einem einfachen Datenmodell geeignet ist. Beide Bibliotheken sind jedoch nützliche Tools für ein effektives Datenflussmanagement in React-basierten Anwendungen.\cite{scalablepath}
 \subsubsection{React Router}
 React Router ist eine JavaScript-Bibliothek, die in Verbindung mit der React-Bibliothek verwendet wird.Es ermöglicht   eine effiziente und reibungslose Navigation zwischen verschiedenen Seiten oder Komponenten innerhalb einer Webanwendung.\\ 
@@ -300,39 +302,45 @@ Insgesamt ist die Optimierung der Leistung Ihrer React-Anwendung ein wichtiger A
 
 
 \subsubsection{Sicherheit und React}
-Sicherheit ist ein wichtiger Aspekt bei der Entwicklung von React-Anwendungen, da Sicherheitslücken zu ernsthaften Problemen führen können. Es gibt verschiedene Best Practices, die bei der Entwicklung von sicheren React-Anwendungen beachtet werden sollten.
+Wenn es um Sicherheit geht, bietet React einige integrierte Funktionen, um häufige Web-Sicherheitsprobleme zu vermeiden. Allerdings liegt es  auch in der Verantwortung des Entwicklers, für die Sicherheit der Anwendung zu sorgen.\\
 
-Eine Möglichkeit besteht darin, XSS-Angriffe (Cross-Site Scripting) zu vermeiden. XSS-Angriffe können dazu führen, dass schädlicher Code in die Anwendung eingeschleust wird. Um XSS-Angriffe zu vermeiden, sollten alle Daten, die von Benutzern eingegeben werden können, validiert und gefiltert werden. Darüber hinaus sollte auch das Rendering von HTML sorgfältig überwacht werden.
+React rät beispielsweise von der Verwendung unsicheren Codes ab, indem es JSX bereitstellt, das  Ausdrücke vor dem Rendern standardmäßig maskiert, um Cross-Site-Scripting-Angriffe (XSS)  zu verhindern. Es soll jedoch beachtet werden, dass ReactJS selbst keine vollständige Sicherheitslösung ist. Auch auf andere Sicherheitsaspekte wie sichere API-Endpunkte und den richtigen Einsatz von HTTPS sollten Entwickler bewusst achten.\\
 
-Eine weitere Möglichkeit, die Sicherheit von React-Anwendungen zu verbessern, besteht darin, die Codequalität zu verbessern. Eine gute Codequalität kann dazu beitragen, potenzielle Sicherheitslücken zu identifizieren und zu beheben, bevor sie ausgenutzt werden können.
+Darüber hinaus gibt es Tools wie „Invicti Web Application Security Scanner“, die  automatische Schwachstellenprüfungen durchführen und dabei helfen, die Sicherheit von React-Anwendungen weiter zu verbessern\cite{geekflare_learning_resources}\cite{geekflare_rendering}.\\
 
-Außerdem sollten bei der Entwicklung von React-Anwendungen Best Practices für die Sicherheit von Webanwendungen beachtet werden, wie z.B. die Verwendung von sicheren Passwörtern und die Vermeidung von unsicheren Bibliotheken oder Frameworks (\cite{ReactSecurity}, \cite{FreeCodeCamp}).
+Insgesamt bietet React  eine solide Grundlage für die sichere Entwicklung von Webanwendungen,  erfordert jedoch von den Entwicklern dennoch ein hohes Maß an Bewusstsein und Sorgfalt, um sicherzustellen, dass ihre Anwendungen resistent gegen Angriffe sind.\\
 
 \subsection{Vergleich mit anderen Frontend-Technologien}
+In diesemm Kapitel werden die unterschiedlichsten Frontend- Technologien miteinander verglichen.
 \subsubsection{Vor- und Nachteile von React im Vergleich zu Angular und Vue.js}
 React, Angular und Vue.js sind beliebte Frontend-Technologien, die bei der Entwicklung von modernen Webanwendungen eingesetzt werden. Jede Technologie hat ihre Vor- und Nachteile, die bei der Wahl der Technologie berücksichtigt werden sollten.
+Angular, React und Vue.js sind alle weit verbreitet und haben jeweils ihre Stärken und Schwächen.\\
 
-React zeichnet sich durch seine Flexibilität und einfache Handhabung aus. Es ist eine Bibliothek und nicht ein vollständiges Framework, was bedeutet, dass Entwickler mehr Freiheit haben und nur die Teile von React verwenden können, die sie benötigen. Dadurch ist React auch in der Regel schneller und leichter als Frameworks wie Angular oder Vue.js. Außerdem ist React sehr beliebt und hat eine große und aktive Community, was zu einer Fülle von Ressourcen und Unterstützung führt (\cite{Hosttest}).
+Angular ist ein umfangreiches Framework zum Erstellen skalierbarer und leistungsstarker Anwendungen. Es verfügt über einen schlanken Kerncode mit hoher Modularität mit externen Komponenten, was eine unbegrenzte Integration und Nutzung von HTML und CSS ermöglicht. Darüber hinaus unterstützt es TypeScript und JavaScript und trennt Vorlagen strikt  von Design und Logik \cite{hosttest2021}. Der Nachteil ist, dass frühere Angular-Versionen nicht gut für den Aufbau dynamischer Webanwendungen und  komplexer digitaler Produkte  geeignet sind \cite{ichi2023}.\\
 
-Im Vergleich zu Angular und Vue.js hat React jedoch auch einige Nachteile. Einer der Nachteile ist, dass React weniger Features und Werkzeuge bietet als Angular oder Vue.js. Dadurch müssen Entwickler möglicherweise zusätzliche Bibliotheken und Tools verwenden, um bestimmte Aufgaben zu erledigen. Ein weiterer Nachteil von React ist, dass es nicht so viele vorgefertigte UI-Komponenten wie Vue.js bietet, was die Entwicklung von Anwendungen erschweren kann (\cite{Kruschecompany}).
-\subsubsection{Verwendung von React in größeren Projekten}
-React eignet sich auch sehr gut für größere Projekte, da es die Möglichkeit bietet, Anwendungen in kleine, wiederverwendbare Komponenten aufzuteilen. Dadurch können Teams effizienter arbeiten und die Anwendung leichter warten und skalieren. Darüber hinaus bietet React auch die Möglichkeit, Code-Splitting und Lazy Loading zu verwenden, um die Ladezeit von Anwendungen zu reduzieren und die Leistung zu verbessern.
+React hingegen ist eine Open-Source-GUI-Bibliothek und bietet einige Vorteile. Neue Entwickler können dieses Tool leicht erlernen. Es kann mit anderen JS-Bibliotheken und Frameworks verwendet werden \cite{softwaredeveloperindia2022}. React verfügt außerdem über eine sehr aktive Community, die ständig neue Bibliotheken und Tools entwickelt, um die Entwicklung einfacher und schneller zu machen. Der Nachteil ist, dass es  nicht so leistungsstark ist wie Angular oder Vue \cite{logrocket2021}.
 
-Es ist jedoch wichtig, dass bei größeren Projekten Best Practices für React-Anwendungen beachtet werden, wie z.B. die Verwendung von Redux für eine effektive Verwaltung des Anwendungszustands oder die Verwendung von TypeScript, um die Codequalität zu verbessern und die Entwicklungszeit zu verkürzen.
-\subsubsection{Zukunft von React}
-React hat sich in den letzten Jahren zu einer der beliebtesten Frontend-Technologien entwickelt und wird voraussichtlich auch in Zukunft eine wichtige Rolle spielen. Es gibt viele Indikatoren dafür, dass React weiterhin wachsen wird, wie z.B. die große und aktive Community, die kontinuierliche Entwicklung und Verbesserung der Bibliothek, sowie die Verwendung von React in vielen großen und erfolgreichen Unternehmen.
+Vue.js ist dasjenige neueste der drei Frameworks und zeichnet sich durch eine einfache Satzlehre und eine leichte Lernkurve aus. Es hat eine sehr schnelle Startzeit und ist daher unter Entwicklern beliebt, selbige schnell Prototypen hinstellen möchten\cite{logrocket2021}. Obwohl Vue.js eine kleinere Community hat denn Angular und React, wächst jene schnell und bietet eine starke Unterstützung \cite{codeinwp}.
 
-Darüber hinaus gibt es auch neue Entwicklungen wie React Native, das es Entwicklern ermöglicht, native mobile Anwendungen mit React zu entwickeln (\cite{LeanOcean}). Durch die Verwendung von React Native können Entwickler die Vorteile von React auch in der Entwicklung von mobilen Anwendungen nutzen.
+Diese Vor und Nachteile werden in der nachfolgenden Tabelle nochmals visualisiert.
+\begin{center}
+\begin{table}[h]
+	\begin{tabularx}{4cm}{|l|l|p{4.5 cm}|ll}
+		\cline{1-3}
+		\textbf{Technolgie} & \textbf{Vorteil}                         & \textbf{Nachteil}                                                &  &  \\ \cline{1-3}
+		Angular             & Schlanker Kerncode mit hoher Modularität & nicht geeignet für dynamiche Web-App  &  &  \\ \cline{1-3}
+		React               & Einfach zu erlernen, aktive Community    & Weniger leistungsstark         &  &  \\ \cline{1-3}
+		Vue.js              & Einfache Satzlehre, schnelle Startzeit   & Kleinere Community             &  &  \\ \cline{1-3}
+	\end{tabularx}
+\end{table}
+\end{center}
+
+Zusammenfassend haben alle drei Frameworks ihre eigenen Stärken und Schwächen haben und die Wahl hängt deutlich von den spezifischen Erwartungen und Präferenzen des Entwicklerteams ab.
+
 \subsection{Fazit}
-\subsubsection{Ausblick auf weitere Entwicklungen in React}
-React hat sich in der Webentwicklung als eine der beliebtesten Frontend-Technologien etabliert und wird auch in Zukunft eine wichtige Rolle spielen. Es bietet viele Vorteile wie eine hohe Flexibilität, Leistung und eine große Community. Auch für größere Projekte eignet sich React sehr gut, da es die Möglichkeit bietet, Anwendungen in kleine, wiederverwendbare Komponenten aufzuteilen.
-
-Die kontinuierliche Entwicklung und Verbesserung von React bleibt ein wichtiger Aspekt, um die Bedürfnisse der Benutzer zu erfüllen und wettbewerbsfähig zu bleiben. Die Entwicklergemeinschaft arbeitet ständig an neuen Funktionen und Verbesserungen, um React noch besser zu machen. Ein Beispiel dafür ist React Fiber, eine neue interne Rekonstruktionsstrategie von React, die auf eine bessere Leistung und mehr Flexibilität abzielt.
-
-Ein weiterer wichtiger Trend in der React-Entwicklung ist die Verwendung von React Native, das es Entwicklern ermöglicht, native mobile Anwendungen mit React zu entwickeln. Durch die Verwendung von React Native können Entwickler die Vorteile von React auch in der Entwicklung von mobilen Anwendungen nutzen und so die Entwicklung von Web- und mobilen Anwendungen besser integrieren.
-
-Insgesamt bleibt React eine der führenden Technologien in der Frontend-Entwicklung und wird voraussichtlich auch in Zukunft eine wichtige Rolle spielen. Durch die ständige Entwicklung und Verbesserung von React sowie die Integration von React Native in die Entwicklung von mobilen Anwendungen wird React auch weiterhin eine wettbewerbsfähige Technologie bleiben.
-
+React hat sich als eine der beliebtesten JavaScript-Bibliotheken etabliert und bietet Entwicklern eine effiziente und flexible Plattform zum Erstellen von Benutzeroberflächen für Webanwendungen. Es zeichnet sich durch die Bereitstellung wiederverwendbarer UI-Komponenten und einer deklarativen Codestruktur aus, die das Debuggen und die Vorhersagbarkeit erleichtert. 
+Die Weiterentwicklung von React zeigt deutlich, dass der Trend zur Verwendung von React Hooks weiter zunimmt. Sie bieten eine einfachere und effizientere Möglichkeit zur Erstellung von React-Komponenten  und werden bereits von vielen Unternehmen in der Produktion eingesetzt. Es wird erwartet, dass dieser Trend die Zukunft der React-Entwicklung  prägen wird.  React lebt in einem dynamischen Ökosystem und interagiert mit anderen Technologien und Frameworks. Neuere Technologien wie Svelte verfolgen einen anderen Ansatz bei der Nutzung des virtuellen DOM und könnten zu zukünftigen Verbesserungen und Änderungen an React führen. 
+Zusammenfassend lässt sich sagen, dass React aufgrund seiner Flexibilität, Beliebtheit und aktiven Community  eine starke Position in der Zukunft der Webentwicklung einnehmen könnte. Es wird erwartet, dass React seine Rolle als Branchenführer beibehält und weiterhin innovative Lösungen für die Entwicklung von Benutzeroberflächen bereitstellt.
 
 \section{Docker}
 
