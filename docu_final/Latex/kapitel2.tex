@@ -345,53 +345,54 @@ Zusammenfassend lässt sich sagen, dass React aufgrund seiner Flexibilität, Bel
 \section{Docker}
 
 \begin{wrapfigure}{r}{0.4\textwidth}
-\centering
-\fbox{\includegraphics[width=0.30\textwidth]{images/docker}}
+	\centering
+	\fbox{\includegraphics[width=0.30\textwidth]{images/docker}}
 \end{wrapfigure}
 
-Um die DHBW Star Webseite Plattformunabhängig testen und betreiben können, entschieden wir uns für Docker. Dieser ist sowohl auf unseren Rechnern als auch auf dem Test Server installiert. Damit wurden Probleme, die durch unterschiedlichen Betriebssysteme oder Softwareversionen entstehen könnten, vermieden.
+Um die DHBW Star Webseite plattformunabhängig testen und betreiben können, entschieden wir uns für Docker. Dieser ist sowohl auf unseren Rechnern als auch auf dem Testserver installiert. Damit wurden Probleme, die durch unterschiedliche Betriebssysteme oder Softwareversionen entstehen könnten, vermieden.
 
-\subsection{Was ist Docker}
+\subsection{Was ist Docker? }
 
-Docker ist eine freie Container basierte Virtualisierung Software unter der Apache-Lizenz.
-Docker kann eine Software mit all ihren benötigten Abhängigkeiten (z.B. Bibliotheken) in ein Containerimage packten. Dieses Image kann Docker unabhängig von der Plattform oder der vorhandenen Software ausführen. Dies Ermöglicht einen hohen Grad an Flexibilität, erhöht die Sicherheit und verhindert Probleme mit verschieden Versionen von Bibliotheken.
-Jeder Container ist eine eigene Sandbox und Somit Isoliert und unabhängig von anderen Prozessen auf dem Host System.
+
+Docker ist eine freie Container-basierte Virtualisierungs-Software unter der Apache-Lizenz.
+Sie kann eine Software mit all ihren benötigten Abhängigkeiten (z.B. Bibliotheken) in ein Containerimage packen. Dieses Image kann Docker unabhängig von der Plattform oder der vorhandenen Software ausführen. Dies ermöglicht einen hohen Grad an Flexibilität, erhöht die Sicherheit und verhindert Probleme mit verschiedenen Versionen von Bibliotheken.
+Jeder Container ist eine eigene Sandbox und somit isoliert und unabhängig von anderen Prozessen auf dem Host-System.
 
 \subsection{Docker-Daemon}
-Der Kern von Docker ist der Docker-Daemon. Er verwaltet die Container und wird per  Docker Engine API gesteuert. Dazu gibt es verschiedene Programme die Clients genannt werden. Je nach Aufgabe kann ein Client besser geeignet sein als ein andere. Es muss sich aber nicht auf einen festgelegt werden. Auch die parallel Nutzung ist einfach möglich. In diesem Projekt kommen Docker und Compose zum Einsatz.
+Der Kern von Docker ist der Docker-Daemon. Er verwaltet die Container und wird per Docker-Engine ( API) gesteuert. Dazu gibt es verschiedene Programme, die Clients genannt werden. Je nach Aufgabe kann ein Client besser geeignet sein als ein anderer. Es muss sich aber nicht auf einen festgelegt werden. Auch die parallele Nutzung ist möglich. In diesem Projekt kommen Docker und Compose zum Einsatz.
 
 \subsection{Docker Images und Container}
-Um ein Programm in Docker zu starten werden zwei Schritte benötigt.\\
-1. Ein Docker Images erzeugen.\\
-2. Image als Container Starten.\\
-Um ein Image zu erstellen wird meist ein Vorhandenes als Basis-Image verwendet. Dockerhub.com biete eine Vielzahl an Images für alle möglichen Anwendungen an.
-In einer Datei mit den Namen Dockerfile kann mit \emph{FROM "imagename"} eins der Images einfach als Basis festgelegt werden. Danach können eigene Dateien kopiert oder Programme installiert bzw. Ausgeführt werden. Diese Änderungen gespeichert einen Virtuellem Dateisystem im erzeugtem Image.
+Um ein Programm in einem  Container laufen zu lassen, werden zwei Schritte benötigt. \\
+1. Ein Docker-Image mit den Programm und dazugehörigen Daten erzeugen. \\
+2. Image als Container starten. \\
+Um ein Image zu erstellen wird meist ein Vorhandenes als Basis-Image verwendet. Dockerhub.com bietet eine Vielzahl an Images für alle möglichen Anwendungen an.
+In einer Datei mit den Namen Dockerfile kann mit \emph{FROM "imagename"} eins der Images einfach als Basis festgelegt werden. Danach können eigene Dateien kopiert oder Programme installiert bzw. ausgeführt werden. Diese Änderungen speichert einen virtuellen Dateisystem im erzeugten Image.
 
 Wenn ein Image gestartet wird nennt Docker dies einen Container.
 Beim Starten können noch Einstellungen festgelegt werden (z.B. Port Weiterleitung).
 Jedes Image kann beliebig oft als Container mit eigenen Einstellungen gestartet werden. So ist es möglich, das selbe Image mit unterschiedlicher Konfiguration gleichzeitig laufen zu lassen.
 
-\todo {Quelle: docs.docker.com}
+\todo {Quelle: docs.docker.com }
 
-\subsection{Docker Compose}
+\subsection{Docker Compose }
 Gehören zu einer Anwendung oder einem Service mehrere Container so bietet der Client \emph{Docker Compose} die Möglichkeiten automatisch Images zu erzeugen und Container zu starten. Dieser muss meist erst installiert werden.
 
-Für \emph{compose} wird eine \emph{compose.yaml} Datei verwendet. In dieser stehen die  zu startenden Container und die jeweils dazugehörige Konfiguration.
+Für \emph{compose} wird eine \emph{compose.yaml} Datei verwendet. In dieser stehen die  zu startenden Container und die jeweils dazugehörige Konfiguration.
 Mit dem Befehl \emph{docker compose up} starten alle Container.
-Dadurch wird ein hoch automatisierter Arbeitsprozess ermöglicht.
+Dadurch wird ein vollautomatisierter Arbeitsprozess ermöglicht.
 
-\subsection{Vor- und Nachteile von Docker}
-Docker ermöglicht durch seine flexible Abstraktion ein fast plattformunabhängigen betrieb von Software. Dies wird erreicht in dem Docker verschiedenen Ebenen von Abstraktionen verwendet um so für die Software eine einheitliche Umgebung zu garantieren. Es wir aber im Gegensatz zu Virtuellen Maschinen keine Hardware simuliert.
+\subsection{Vor- und Nachteile von Docker }
+Docker ermöglicht durch seine flexible Abstraktion einen fast plattformunabhängigen Betrieb von Software. Dies wird erreicht in dem Docker verschiedene Ebenen von Abstraktionen verwendet um so für die Software eine einheitliche Umgebung zu gewährleisten. Es wird aber im Gegensatz zu virtuellen Maschinen keine Hardware simuliert.
 
-Für Abstraktion werden allerdings mehr Ressourcen benötigt, da teilweise ganze Betriebssysteme in einem Container laufen. Somit kann ein einzelner Docker Container gern mal mehrere GB an Arbeitsspeicher benötigen.
+Für die Abstraktion werden allerdings mehr Ressourcen benötigt, da teilweise ganze Betriebssysteme in einem Container laufen. Somit kann ein einzelner Docker Container gern mal mehrere GB an Arbeitsspeicher benötigen.
 
-Zudem kann das bauen eines Containers je nach Rechenleistung und Internet Geschwindigkeit einiges an zeit in Anspruch nehmen. Das kann vor allem beim entwickeln viel zeit kosten, wenn zum testen der Container mehrmals hintereinander neu gebaut werden muss.
+Zudem kann das bauen eines Containers je nach Rechenleistung und Internetgeschwindigkeit einiges an Zeit in Anspruch nehmen. Das kann vor allem beim Entwickeln viel Zeit kosten, wenn zum Testen der Container mehrmals hintereinander neu gebaut werden muss.
 
-\subsection{Docker unter Windows}
-Um Docker unter Windows benutzen zu können muss WSL2 (Windows Subsystem for Linux 2) Installiert und Aktiviert sein.
+\subsection{Docker unter Windows }
+Um Docker unter Windows benutzen zu können muss WSL2 (Windows Subsystem for Linux 2) installiert und aktiviert sein.
 In diesem läuft dann der Docker-Daemon.
 
-Docker Desktop ist eine Client mit Grafische Oberfläche. Dieser steuert den Docker-Dienst um Container zu starten oder zu Stoppen.
+Docker Desktop ist ein Client mit Grafischer Oberfläche. Dieser steuert den Docker-Dienst um Container zu starten oder zu stoppen.
 
 Nach dem Start zeigt er die Container welche Docker gespeichert hat mit Namen, Images, Ports und wann er zuletzt gestartet wurde. (Abb: \ref{fig-docker-desktop})
 Mit einem Klick auf den Container können unter anderem seine Logs oder ein Terminal im Container erreicht werden, welche bei der Fehlersuche ein sehr hilfreich sein können.
