@@ -61,42 +61,42 @@ In diesem Codeblock befindet sich die Homepage-Komponente:\\
 	label={Homepage-Komponente},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={Homepage-Komponente}]
-	import React, { useState, useEffect } from 'react';
-	import './home.css';
-	import SchedulerNow from '../Scheduler/ScheduleNow';
-	import FoodNow from '../Food/FoodNow';
-	
-	function Homepage() {
-		const [time, setTime] = useState(new Date());
-		const [currentEvent, setCurrentEvent] = useState(null);
-		useEffect(() => {
-			const interval = setInterval(() => {
-				setTime(new Date());}, 1000);
-			return () => clearInterval(interval);
-		}, []);
-		const days = ['Sonntag', 'Montag', 'Dienstag', 
-		'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-		const today = days[time.getDay()];
-		const date = time.toLocaleDateString();
-		return (
-		<div className="homepage">
-		<div className="header">
-		<h1>Willkommen bei DHBW-Star</h1>
-		</div>
-		<div className="current-lecture">
-		<h2>Aktuelle Vorlesung</h2>
-		<SchedulerNow setCurrentEvent={setCurrentEvent} />
-		</div>
-		<div className="todays-food">
-		<h2>Heutiges Essen</h2>
-		<FoodNow />
-		</div>
-		<div className="date-time">
-		<h2>{today}, den {date}</h2>
-		<h2>{time.toLocaleTimeString()}</h2>
-		</div>
-		</div>
-		);
+import React, { useState, useEffect } from 'react';
+import './home.css';
+import SchedulerNow from '../Scheduler/ScheduleNow';
+import FoodNow from '../Food/FoodNow';
+
+function Homepage() {
+	const [time, setTime] = useState(new Date());
+	const [currentEvent, setCurrentEvent] = useState(null);
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setTime(new Date());}, 1000);
+		return () => clearInterval(interval);
+	}, []);
+	const days = ['Sonntag', 'Montag', 'Dienstag', 
+	'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+	const today = days[time.getDay()];
+	const date = time.toLocaleDateString();
+	return (
+	<div className="homepage">
+	<div className="header">
+	<h1>Willkommen bei DHBW-Star</h1>
+	</div>
+	<div className="current-lecture">
+	<h2>Aktuelle Vorlesung</h2>
+	<SchedulerNow setCurrentEvent={setCurrentEvent} />
+	</div>
+	<div className="todays-food">
+	<h2>Heutiges Essen</h2>
+	<FoodNow />
+	</div>
+	<div className="date-time">
+	<h2>{today}, den {date}</h2>
+	<h2>{time.toLocaleTimeString()}</h2>
+	</div>
+	</div>
+	);
 	}
 	export default Homepage;
 	
@@ -146,110 +146,88 @@ Dies ist der dazugehörige Code:
 	label={Food-Komponente},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={Food-Komponente}]
-	import React, { useState, useEffect } from "react";
-	import axios from "axios";
-	import "./Food.css";
-	
-	const getEmoji = (classifier,name) => {
-	
-	};
-	const Food = () => {
-		const [dates, setDates] = useState([]);
-		const [activeTab, setActiveTab] = useState(0);
-		const [meals, setMeals] = useState([]);
-		
-		useEffect(() => {
-			fetchDates();
-		}, []);
-		
-		useEffect(() => {
-			if (dates.length > 0) {
-				fetchMeals(dates[activeTab]);
-			}
-		}, [dates, activeTab]);
-		
-		const fetchDates = async () => {
-			try {
-				const response = await axios.get(process.env.
-				REACT_APP_MENSA_ADDRESS+"/plans");
-				const dateList = response.data.data.map((date) =>
-				`{date.date.year}-{(date.date.month + 1).toString()
-					.padStart(2, "0")}-{date.date.day.toString()
-					.padStart(2, "0")}`
-				).slice(0, 10);
-				setDates(dateList);
-			} catch (error) {
-				console.error("Error fetching dates:", error);
-			}
-		};
-		
-		const fetchMeals = async (date) => {
-			try {
-				const response = await axios.get(
-				process.env.REACT_APP_MENSA_ADDRESS+
-				`/plans/{date}?canteens=erzberger`
-				);
-				let mealData = response.data.data[0].lines
-				.slice(0, 3)
-				.map((line) => ({
-					main: line.meals[0],
-					description: line.meals[1]?.name,}));
-				if (!mealData[0]['main']){
-					console.log("FEIERTAG")
-					mealData=[{
-						main: {
-							classifiers: 'Nein',
-							name:"Feiertag/kein Essen",
-							price:"0 Euro"
-						},
-						description: "An dem heutigen Tag ist 
-						die Mensa geschlossen."}]
-				}
-				setMeals(mealData);
-			} catch (error) {
-				console.error("Error fetching meals:", error);
-			}
-		};
-		
-		return (
-		<div className="mensa-plan">
-		<div className="tabs">
-		{dates.map((date, index) => (
-			<button
-			key={index}
-			className={`tab {index === activeTab ? "active" : ""}`}
-			onClick={() => setActiveTab(index)}
-			>
-			{date}
-			</button>
-			))}
-		</div>
-		<div className="tab-content">
-		{meals.map((mealObj, index) => {
-				const meal = mealObj.main;
-				if (meal?.empty) {
-					return (
-					<div key={index} className="no-meal">
-					<h3>Feiertag/Kein Essen</h3>
-					</div>
-					);
-				} else {
-					return (
-					<div key={index} className="meal">
-					<h3>
-					{getEmoji(meal.classifiers[0],meal.name)} {meal.name}
-					</h3>
-					<p>{mealObj.description}</p>
-					<p>{meal.price}</p>
-					</div>
-					);}
-			})}
-		</div>
-		</div>
-		);
-	};
-	
-	export default Food;
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Food.css";
+
+const getEmoji = (classifier,name) => {
+	/// Returns Emojis depending on the classifiers
+};
+const Food = () => {
+  const [dates, setDates] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
+  const [meals, setMeals] = useState([]);
+  
+  useEffect(() => {
+  	fetchDates();}, []);
+  useEffect(() => {
+   if (dates.length > 0) {
+   	fetchMeals(dates[activeTab]);}
+   }, [dates, activeTab]);
+  const fetchDates = async () => {
+  	try {
+  	 const response = await axios.get(process.env.
+  	 REACT_APP_MENSA_ADDRESS+"/plans");
+  	 const dateList = response.data.data.map((date) =>
+  	 `{date.date.year}-{(date.date.month + 1).toString()
+  	 .padStart(2, "0")}-{date.date.day.toString()
+  	 .padStart(2, "0")}`).slice(0, 10);
+     setDates(dateList);} 
+    catch (error) {
+     console.error("Error fetching dates:", error);}
+ };
+
+const fetchMeals = async (date) => {
+  try {
+   const response = await axios.get(
+   process.env.REACT_APP_MENSA_ADDRES-+
+   `/plans/{date}?canteens=erzberger`);
+   let mealData = response.data.data[0].lines
+   .slice(0, 3).map((line) => ({
+   	main: line.meals[0],
+   	description: line.meals[1]?.name,}));
+   if (!mealData[0]['main']){
+   console.log("FEIERTAG")
+   mealData=[{
+   	main: {
+   	 classifiers: 'Nein',
+   	 name:"Feiertag/kein Essen",
+   	 price:"0 Euro"},
+    description: "An dem heutigen Tag ist 
+    die Mensa geschlossen."}]}
+   setMeals(mealData);
+  } catch (error) {
+  console.error("Error fetching meals:", error);
+}};
+return (
+ <div className="mensa-plan">
+ <div className="tabs">
+ {dates.map((date, index) => (
+  <button
+    key={index}
+    className={`tab {index === activeTab ? "active" : ""}`}
+    onClick={() => setActiveTab(index)}>
+    {date}</button>))}
+  </div>
+  <div className="tab-content">
+  {meals.map((mealObj, index) => {
+    const meal = mealObj.main;
+    if (meal?.empty) {
+     return (
+     <div key={index} className="no-meal">
+     <h3>Feiertag/Kein Essen</h3></div>);
+ } else {
+  return (
+  <div key={index} className="meal">
+  <h3>
+  {getEmoji(meal.classifiers[0],meal.name)} {meal.name}
+  </h3>
+  <p>{mealObj.description}</p>
+  <p>{meal.price}</p></div>);}})}
+  </div>
+  </div>);};
+
+export default Food;
 	
 \end{lstlisting}
 
@@ -269,101 +247,85 @@ In diesem Codeblock befindet sich der dazugehörige Code:
 	label={FoodNow-Komponente},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={FoodNow-Komponente}]
-	import React, { useState, useEffect } from "react";
-	import axios from "axios";
-	import "./Food.css";
-	const getEmoji = (classifier, name) => {
-		switch (classifier) {
-			
-	}};
-	
-	const FoodNow = () => {
-		const [meals, setMeals] = useState([]);
-		const [mensaStatus, setMensaStatus] = 
-		useState({ isOpen: false, isBeforeOpening: false });
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Food.css";
+const getEmoji = (classifier, name) => {
+	switch (classifier) {
 		
-		useEffect(() => {
-			fetchMeals();}, []);
-		
-		const isMensaOpen = () => {
-			const now = new Date();
-			const day = now.getDay();
-			const time = now.getHours() * 60 + now.getMinutes();
-			const openingTime = 11 * 60 + 15;
-			const closingTime = 13 * 60 + 30;
-			
-			const beforeOpening = time < openingTime;
-			return {
-				isOpen: day >= 1 && day <= 5 && time >= openingTime 
-				&& time <= closingTime,
-				isBeforeOpening: beforeOpening,};
-		};
-		const fetchMeals = async () => {
-			try {
-				const mensaStatus = isMensaOpen();
-				if (mensaStatus.isOpen || mensaStatus.isBeforeOpening) {
-					const today = new Date().toISOString().slice(0, 10);
-					const response = await axios.get(
-					process.env.REACT_APP_MENSA_ADDRESS+
-					`/plans/${today}?canteens=erzberger`);
-					let mealData = response.data.data[0].lines.slice(0, 3)
-					.map((line) => ({
-						main: line.meals[0],
-						description: line.meals[1]?.name,}));
-					if (!mealData[0]["main"]) {
-						console.log("FEIERTAG");
-						mealData = [{
-							main: {
-								classifiers: "Nein",
-								name: "Feiertag/kein Essen",
-								price: "0",},
-							description: "An dem heutigen Tag ist 
-							die Mensa geschlossen.",},];
-					}
-					setMeals(mealData);
-					setMensaStatus(mensaStatus);
-				} else {
-					setMensaStatus({ isOpen: false, isBeforeOpening: false });}
-			} catch (error) {
-				console.error("Error fetching meals:", error);}
-		};
-		
-		return (
-		<div className="mensa-plan">
-		<div className="tab-content">
-		{mensaStatus.isOpen || mensaStatus.isBeforeOpening ? (
-			meals.length > 0 ? (
-			meals.map((mealObj, index) => {
-				const meal = mealObj.main;
-				return (
-				<div key={index} className="meal">
-				<h3>
-				{getEmoji(meal.classifiers[0], meal.name)}{meal.name}
-				</h3>
-				<p>{mealObj.description}</p>
-				<p>{meal.price}</p>
-				</div>
-				);})
-			) : (
-			<div className="no-meal">
-			<h3>Keine Informationen fuer 
-			heute verfuegbar</h3>
-			</div>)
-			) : (
-			<div className="no-meal">
-			<h3>Die Mensa ist geschlossen</h3>
-			</div>)}
-		{mensaStatus.isBeforeOpening && (
-			<div className="before-opening">
-			<h3>Die Mensa ist noch geschlossen. 
-			Sie oeffnet um 11:15 Uhr.</h3>
-			</div>)}
-		</div>
-		</div>
-		);
-	};
-	export default FoodNow;
-	
+}};
+const FoodNow = () => {
+  const [meals, setMeals] = useState([]);
+  const [mensaStatus, setMensaStatus] = 
+  useState({ isOpen: false, isBeforeOpening: false });
+  useEffect(() => {
+    fetchMeals();}, []);
+  const isMensaOpen = () => {
+  	const now = new Date();
+  	const day = now.getDay();
+  	const time = now.getHours() * 60 + now.getMinutes();
+  	const openingTime = 11 * 60 + 15;
+  	const closingTime = 13 * 60 + 30;
+  	const beforeOpening = time < openingTime;
+  	 return {
+  	  isOpen: day >= 1 && day <= 5 && time >= openingTime 
+  	  && time <= closingTime,
+  	  isBeforeOpening: beforeOpening,};};
+    const fetchMeals = async () => {
+     try {
+      const mensaStatus = isMensaOpen();
+      if (mensaStatus.isOpen || mensaStatus.isBeforeOpening) {
+       const today = new Date().toISOString().slice(0, 10);
+       const response = await axios.get(
+       process.env.REACT_APP_MENSA_ADDRESS+
+       `/plans/${today}?canteens=erzberger`);
+       let mealData = response.data.data[0].lines.slice(0, 3)
+       .map((line) => ({
+       	main: line.meals[0],
+       	description: line.meals[1]?.name,}));
+       if (!mealData[0]["main"]) {
+        console.log("FEIERTAG");
+         mealData = [{
+         	main: {
+             classifiers: "Nein",
+             name: "Feiertag/kein Essen",
+             price: "0",},
+           description: "An dem heutigen Tag ist 
+            die Mensa geschlossen.",},];}
+        setMeals(mealData);
+        setMensaStatus(mensaStatus);
+     } else {
+      setMensaStatus({ isOpen: false, isBeforeOpening: false });}
+      } catch (error) {
+      console.error("Error fetching meals:", error);}};
+  return (
+   <div className="mensa-plan">
+   <div className="tab-content">
+   {mensaStatus.isOpen || mensaStatus.isBeforeOpening ? (
+   	 meals.length > 0 ? (
+   	 meals.map((mealObj, index) => {
+   	  const meal = mealObj.main;
+   	  return (
+   	  <div key={index} className="meal">
+   	  <h3>
+   	  {getEmoji(meal.classifiers[0], meal.name)}{meal.name}
+   	  </h3>
+   	  <p>{mealObj.description}</p>
+   	  <p>{meal.price}</p>
+   	  </div>);})) : (
+     <div className="no-meal">
+     <h3>Keine Informationen fuer heute verfuegbar</h3>
+     </div>)) : (
+     <div className="no-meal">
+     <h3>Die Mensa ist geschlossen</h3></div>)}
+   {mensaStatus.isBeforeOpening && (
+   	<div className="before-opening">
+   	<h3>Die Mensa ist noch geschlossen. 
+   	Sie oeffnet um 11:15 Uhr.</h3></div>)}
+   </div>
+   </div>);};
+export default FoodNow;
+
 \end{lstlisting}
 \newpage
 \subsection{Scheduler}
@@ -392,121 +354,112 @@ Das ist der Code für die \emph{Scheduler}-Komponente:
 	label={Scheduler-Komponente},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={Scheduler-Komponente}]
-	import React, { useState, useEffect } from 'react';
-	import axios from 'axios';
-	import FullCalendar from '@fullcalendar/react';
-	import dayGridPlugin from '@fullcalendar/daygrid';
-	import timeGridPlugin from '@fullcalendar/timegrid';
-	import interactionPlugin from '@fullcalendar/interaction';
-	import './Scheduler.css';
-	import ICAL from 'ical.js';
-	import '@fullcalendar/core/locales-all';
-	import { isWithinInterval } from 'date-fns';
-	
-	const Scheduler = ({ setCurrentEvent }) => {
-		const [events, setEvents] = useState([]);
-		
-		useEffect(() => {
-			const fetchData = async () => {
-				try {
-					const response = await 
-					axios.get(
-					process.env.REACT_APP_PROXY_ADDRESS+'/schedule');
-					const data = response.data;
-					const parsedEvents = parseEvents(data);
-					setEvents(parsedEvents);
-					const currentEvent = getCurrentEvent(parsedEvents);
-					setCurrentEvent(currentEvent);
-				} catch (error) {
-					console.error(
-					'Error fetching schedule data:', error);
-			}};
-			fetchData();
-		}, [setCurrentEvent]);
-		
-		const getCurrentEvent = (events) => {
-			const now = new Date();
-			const currentEvent = events.find(
-			(event) =>
-			isWithinInterval(now, 
-			{ start: event.start, end: event.end }) &&
-			now.getTime() <= event.end.getTime()
-			);
-			return currentEvent;
-		};
-		
-		const parseEvents = (icalData) => {
-			const jcalData = ICAL.parse(icalData);
-			const comp = new ICAL.Component(jcalData);
-			const events = comp.getAllSubcomponents('vevent');
-			const now = new Date();
-			const startDate = ICAL.Time.fromJSDate(
-			new Date(now.getFullYear() - 1, 
-			now.getMonth(), now.getDate()));
-			const endDate = ICAL.Time.fromJSDate(
-			new Date(now.getFullYear() + 1, 
-			now.getMonth(), now.getDate()));
-			const parsedEvents = [];
-			events.forEach(eventComponent => {
-				const event = new ICAL.Event(eventComponent);
-				const start = event.startDate;
-				const end = event.endDate;
-				
-				if (event.isRecurring()) {
-					const iterator = event.iterator();
-					let next;
-					while ((next = iterator.next())) {
-						if (next.compare(startDate) < 0) {
-							continue;}
-						if (next.compare(endDate) > 0) {
-							break;}
-						const duration = end.subtractDate(start);
-						const eventStart = next;
-						const eventEnd = eventStart.clone();
-						eventEnd.addDuration(duration);
-						parsedEvents.push({
-							title: event.summary,
-							start: eventStart.toJSDate(),
-							end: eventEnd.toJSDate(),
-							location: event.location ? 
-							event.location.value : '',
-							description: event.description,});}
-				} else {
-					parsedEvents.push({
-						title: event.summary ,
-						start: start.toJSDate(),
-						end: end.toJSDate(),
-						location: event.location,
-						description: event.description,
-					});
-				}
-			});
-			console.log(parsedEvents);
-			return parsedEvents;
-		};
-		return (
-		<div className="scheduler">
-		<FullCalendar
-		plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-		initialView="timeGridWeek"
-		headerToolbar={{
-				left: 'prev,next today',
-				center: 'title',
-				right: 'timeGridWeek,timeGridDay',}}
-		events={events}
-		eventColor="#007bff" //// Blaue Akzente
-		locale="de"
-		allDaySlot={false} // Entfernt die Anzeige fuer "all day"-Events
-		nowIndicator={true} 
-		// Fuegt einen roten Zeitstrahl fuer die aktuelle Zeit hinzu
-		weekends={false} // Versteckt Wochenenden
-		slotMinTime="07:00:00" // Startzeit fuer Zeitslots
-		slotMaxTime="18:00:00" // Endzeit fuer Zeitslots
-		/>
-		</div>
-		);
-	};
-	export default Scheduler;
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import './Scheduler.css';
+import ICAL from 'ical.js';
+import '@fullcalendar/core/locales-all';
+import { isWithinInterval } from 'date-fns';
+
+const Scheduler = ({ setCurrentEvent }) => {
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+   const fetchData = async () => {
+   try {
+    const response = await 
+    axios.get(
+    process.env.REACT_APP_PROXY_ADDRESS+'/schedule');
+    const data = response.data;
+    const parsedEvents = parseEvents(data);
+    setEvents(parsedEvents);
+    const currentEvent = getCurrentEvent(parsedEvents);
+    setCurrentEvent(currentEvent);
+} catch (error) {
+  console.error(
+  'Error fetching schedule data:', error);
+   }}
+  fetchData();}, [setCurrentEvent]);
+
+ const getCurrentEvent = (events) => {
+  const now = new Date();
+  const currentEvent = events.find(
+  (event) =>isWithinInterval(now, 
+  { start: event.start, end: event.end }) &&
+  now.getTime() <= event.end.getTime());
+  return currentEvent;};
+
+ const parseEvents = (icalData) => {
+  const jcalData = ICAL.parse(icalData);
+  const comp = new ICAL.Component(jcalData);
+  const events = comp.getAllSubcomponents('vevent');
+  const now = new Date();
+  const startDate = ICAL.Time.fromJSDate(
+  new Date(now.getFullYear() - 1, 
+  now.getMonth(), now.getDate()));
+  const endDate = ICAL.Time.fromJSDate(
+  new Date(now.getFullYear() + 1, 
+  now.getMonth(), now.getDate()));
+  const parsedEvents = [];
+  events.forEach(eventComponent => {
+   const event = new ICAL.Event(eventComponent);
+   const start = event.startDate;
+   const end = event.endDate;
+   if (event.isRecurring()) {
+   	const iterator = event.iterator();
+   	let next;
+   	while ((next = iterator.next())) {
+   	  if (next.compare(startDate) < 0) {
+   	  	continue;}
+      if (next.compare(endDate) > 0) {
+      	break;}
+      const duration = end.subtractDate(start);
+      const eventStart = next;
+      const eventEnd = eventStart.clone();
+      eventEnd.addDuration(duration);
+      parsedEvents.push({
+       title: event.summary,
+       start: eventStart.toJSDate(),
+       end: eventEnd.toJSDate(),
+       location: event.location ? 
+       event.location.value : '',
+       description: event.description,});}
+   } else {
+       parsedEvents.push({
+        title: event.summary ,
+        start: start.toJSDate(),
+        end: end.toJSDate(),
+        location: event.location,
+        description: event.description,});}
+});
+ console.log(parsedEvents);
+ return parsedEvents;};
+
+return (
+  <div className="scheduler">
+  <FullCalendar
+    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+    initialView="timeGridWeek"
+    headerToolbar={{
+      left: 'prev,next today',
+      center: 'title',
+      right: 'timeGridWeek,timeGridDay',}}
+    events={events}
+    eventColor="#007bff" //// Blaue Akzente
+    locale="de"
+    allDaySlot={false} // Entfernt die Anzeige fuer "all day"-Events
+    nowIndicator={true} 
+    // Fuegt einen roten Zeitstrahl fuer die aktuelle Zeit hinzu
+    weekends={false} // Versteckt Wochenenden
+    slotMinTime="07:00:00" // Startzeit fuer Zeitslo-ts
+    slotMaxTime="18:00:00" // Endzeit fuer Zeitslots/>
+    </div>
+    );
+};
+export default Scheduler;
 \end{lstlisting}
 Die \emph{Scheduler}-Komponente besteht aus Funktionskomponenten, die die React-Hooks \emph{useState} und \emph{useEffect} verwenden, um den Status zu verwalten und Nebenwirkungen zu behandeln. Der \emph{useState}-Hook wird verwendet, um den Status des im Kalender angezeigten Ereignisses zu speichern,  und der \emph{useEffect}-Hook wird verwendet, um die \emph{fetchData}-Funktion auszulösen, sobald die Komponente in der Benutzeroberfläche angezeigt wird.\\
 Die \emph{fetchData}-Funktion sendet eine HTTP-GET-Anfrage an den Server,um \emph{ical}-Daten für geplante Ereignisse abzurufen. Diese Daten werden dann mithilfe der \emph{parseEvents}-Funktion in ein Format konvertiert, das von der \emph{FullCalendar}-Bibliothek verstanden wird. Diese Funktion verwendet die \emph{ICAL.js}-Bibliothek, um die \emph{ical}-Daten zu analysieren und in ein JavaScript-Objekt zu konvertieren. Es berücksichtigt auch wiederkehrende Ereignisse und generiert für jede Wiederholung innerhalb eines bestimmten Zeitraums ein eigenes Ereignis.\\
@@ -534,34 +487,35 @@ Dies ist der zu entsprechende Code:
 	label={Proxy-Server},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={Proxy-Server}]
-	const express = require('express');
-	const cors = require('cors');
-	const axios = require('axios');
-	const cach = {}
-	const cachDuration = 3600000; //1h
-	const kurs = 'tinf20b3'
-	const app = express();
-	app.use(cors());
-	app.get('/schedule', async (req, res) => {
-		if (kurs in cach && cach['tinf20b3']
-		.time > new Date().getTime())
-		{ console.log("Get cached Data");
-			res.send(cach['tinf20b3'].data);}
-		else{
-			try {
-				const response = await axios.get(
-				'http://rapla.dhbw-karlsruhe.de/rapla?
-				page=iCal&user=vollmer&file=tinf20b3');
-				cach[kurs] = {
-					time: new Date().getTime() + cachDuration,
-					data: response.data};
-				console.log("save Data in cache:" + cach['tinf20b3'].time);
-				res.send(response.data);} 
-			catch (error) {res.status(500).send({ error: 
-					'An error occurred while fetching the data.' });}}});
-	const PORT = process.env.PROXY_PORT || 3002;
-	app.listen(PORT, () => console.log(`Proxy 
-	server running on port ${PORT}`));
+const express = require('express');
+const cors = require('cors');
+const axios = require('axios');
+const cach = {}
+const cachDuration = 3600000; //1h
+const kurs = 'tinf20b3'
+const app = express();
+app.use(cors());
+app.get('/schedule', async (req, res) => {
+ if (kurs in cach && cach['tinf20b3']
+ .time > new Date().getTime())
+ { console.log("Get cached Data");
+ res.send(cach['tinf20b3'].data);}
+ else{
+  try {
+   const response = await axios.get(
+   'http://rapla.dhbw-karlsruhe.de/rapla?
+   page=iCal&user=vollmer&file=tinf20b3');
+   cach[kurs] = {
+    time: new Date().getTime() + cachDuration,
+    data: response.data};
+    console.log("save Data in cache:" + cach['tinf20b3'].time);
+    res.send(response.data);} 
+   catch (error) {res.status(500).send({ error: 
+   	'An error occurred while fetching the data.' });}}});
+   const PORT = process.env.PROXY_PORT || 3002;
+
+app.listen(PORT, () => console.log(`Proxy 
+server running on port ${PORT}`));
 	
 \end{lstlisting}
 \subsubsection{SchedulerNow}
@@ -574,96 +528,93 @@ Die Komponente \emph{SchedulerNow} ist eine spezielle Komponente, die entwickelt
 	label={SchedulerNow-Komponente},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={SchedulerNow-Komponente}]
-	import React, { useState, useEffect } from 'react';
-	import axios from 'axios';
-	import ICAL from 'ical.js';
-	import { isWithinInterval } from 'date-fns';
-	import './SchedulerNow.css';
-	
-	const SchedulerNow = () => {
-		const [currentEvent, setCurrentEvent] = useState(null);
-		useEffect(() => {
-			const fetchData = async () => {
-				try {
-					const response = await axios.get(process.env.
-					REACT_APP_PROXY_ADDRESS+'/schedule');
-					const data = response.data;
-					const parsedEvents = parseEvents(data);
-					const currentEvent = getCurrentEvent(parsedEvents);
-					setCurrentEvent(currentEvent);
-				} catch (error) {
-					console.error('Error fetching schedule data:', error);}
-			};
-			fetchData();}, []);
-		
-		const getCurrentEvent = (events) => {
-			const now = new Date();
-			const currentEvent = events.find(
-			(event) => isWithinInterval(now, 
-			{ start: event.start, end: event.end }));
-			return currentEvent;};
-		
-		const parseEvents = (icalData) => {
-			const jcalData = ICAL.parse(icalData);
-			const comp = new ICAL.Component(jcalData);
-			const events = comp.getAllSubcomponents('vevent');
-			const now = new Date();
-			const startDate = ICAL.Time.fromJSDate(new Date(
-			now.getFullYear(), now.getMonth()-1, now.getDate()));
-			const endDate = ICAL.Time.fromJSDate(new Date(
-			now.getFullYear() + 1, now.getMonth(), now.getDate()));
-			const parsedEvents = [];
-			events.forEach(eventComponent => {
-				const event = new ICAL.Event(eventComponent);
-				const start = event.startDate;
-				const end = event.endDate;
-				if (event.isRecurring()) {
-					const iterator = event.iterator();
-					let next;
-					while ((next = iterator.next())) {
-						if (next.compare(startDate) < 0) {
-							continue;}
-						if (next.compare(endDate) > 0) {
-							break;}
-						const duration = end.subtractDate(start);
-						const eventStart = next;
-						const eventEnd = eventStart.clone();
-						eventEnd.addDuration(duration);
-						parsedEvents.push({
-							title: event.summary,
-							start: eventStart.toJSDate(),
-							end: eventEnd.toJSDate(),
-							location: event.location ? event.location.value : '',
-							description: event.description,});
-					}
-				} else {
-					parsedEvents.push({
-						title: event.summary ,
-						start: start.toJSDate(),
-						end: end.toJSDate(),
-						location: event.location,
-						description: event.description,});
-			}});
-			console.log('Parsed events:', parsedEvents);
-			return parsedEvents;};
-		
-		const renderCurrentEvent = () => {
-			console.log('Current event:', currentEvent);
-			if (!currentEvent) {
-				return <div className="no-lecture">Keine Vorlesung</div>;}
-			return (
-			<div className="current-lecture">
-			<div className="title">{currentEvent.title}</div>
-			{currentEvent.location && (
-				<div className="location">{currentEvent.location}</div>
-				)}
-			</div>);
-		};
-		return (
-		<div className="scheduler-now">
-		{renderCurrentEvent()}</div>);};
-	
-	export default SchedulerNow;
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ICAL from 'ical.js';
+import { isWithinInterval } from 'date-fns';
+import './SchedulerNow.css';
+
+const SchedulerNow = () => {
+  const [currentEvent, setCurrentEvent] = useState(null);
+  useEffect(() => {
+   const fetchData = async () => {
+   	try {
+   	 const response = await axios.get(process.env.
+   	 REACT_APP_PROXY_ADDRESS+'/schedule');
+   	 const data = response.data;
+   	 const parsedEvents = parseEvents(data);
+   	 const currentEvent = getCurrentEvent(parsedEvents);
+   	 setCurrentEvent(currentEvent);
+  } catch (error) {
+    console.error('Error fetching schedule data:', error);}
+ };
+  fetchData();}, []);
+ const getCurrentEvent = (events) => {
+  const now = new Date();
+  const currentEvent = events.find(
+  (event) => isWithinInterval(now, 
+  { start: event.start, end: event.end }));
+  return currentEvent;};
+  const parseEvents = (icalData) => {
+  	const jcalData = ICAL.parse(icalData);
+  	const comp = new ICAL.Component(jcalData);
+  	const events = comp.getAllSubcomponents('vevent');
+  	const now = new Date();
+  	const startDate = ICAL.Time.fromJSDate(new Date(
+  	now.getFullYear(), now.getMonth()-1, now.getDate()));
+  	const endDate = ICAL.Time.fromJSDate(new Date(
+  	now.getFullYear() + 1, now.getMonth(), now.getDate()));
+  	const parsedEvents = [];
+  	events.forEach(eventComponent => {
+  	 const event = new ICAL.Event(eventComponent);
+  	 const start = event.startDate;
+  	 const end = event.endDate;
+  	 if (event.isRecurring()) {
+  	  const iterator = event.iterator();
+  	  let next;
+  	   while ((next = iterator.next())) {
+  	   	if (next.compare(startDate) < 0) {
+  	   	  continue;}
+     	if (next.compare(endDate) > 0) {
+     	  break;}
+       const duration = end.subtractDate(start);
+       const eventStart = next;
+       const eventEnd = eventStart.clone();
+       eventEnd.addDuration(duration);
+       parsedEvents.push({
+       	title: event.summary,
+       	start: eventStart.toJSDate(),
+       	end: eventEnd.toJSDate(),
+       	location: event.location ? event.location.value : '',
+       	description: event.description,});}
+       } else {
+       parsedEvents.push({
+       	title: event.summary ,
+       	start: start.toJSDate(),
+       	end: end.toJSDate(),
+       	location: event.location,
+       	description: event.description,});}});
+       console.log('Parsed events:', parsedEvents);
+       return parsedEvents;};
+   
+   const renderCurrentEvent = () => {
+   	console.log('Current event:', currentEvent);
+   	if (!currentEvent) {
+   	  return <div className="no-lecture">Keine Vorlesung</div>;}
+     
+  return (
+   <div className="current-lecture">
+   <div className="title">{currentEvent.title}</div>
+   {currentEvent.location && (
+   	<div className="location">{currentEvent.location}</div>)}
+   </div>);
+    };
+ 
+ return (
+ <div className="scheduler-now">
+ {renderCurrentEvent()}</div>);};
+
+export default SchedulerNow;
 \end{lstlisting}
 
 Zunächst wird der Zustand \emph{currentEvent} initialisiert, der das aktuelle Ereignis darstellt. Dieser Status wird später aktualisiert, wenn Daten von der API abgerufen und verarbeitet werden. 
@@ -700,69 +651,62 @@ Dies ist der zusammenhängende Code der Link-Komponente:
 	label={Links-Komponente},
 	captionpos=b ,          % Caption unter den Code setzen
 	caption={Links-Komponente}]
-	import React, { useState,useEffect } from "react";
-	import "./Link.css";
-	const Link = () => {
-		const links = [
-		{
-			\\ Ein Haufen Links die fuers Studieren wichtig sind.
-			\\........................................
-		}
-		];
-		
-		useEffect(() => {
-			return () => {
-				setLoadingLink(null); // Setzt den Ladezustand zurueck, 
-				wenn die Komponente unmountet wird
-			};}, []);
-		const [selectedBox, setSelectedBox] = useState(-1);
-		const [loadingLink, setLoadingLink] = useState(null); 
-		// Initialer State zu null
-		const handleBoxClick = (index) => {
-			if (selectedBox === index) {
-				setSelectedBox(-1);} 
-			else {
-				setSelectedBox(index);
-		}};
-		const handleLinkClick = (e, boxIndex, linkIndex, link) => {
-			e.stopPropagation();
-			setLoadingLink({ boxIndex, linkIndex }); 
-			// Setzen Sie den Lade-Link auf das aktuelle Link-Objekt
-			window.open(link.url, "_blank");
-			
-			setTimeout(() => {
-				setLoadingLink(null); // Setzt den Lade-Link 
-				nach einer Verzoegerung zurueck
-			}, 2000);};
-		
-		return (
-		<div className="link-collection">
-		{links.map((box, boxIndex) => (
-			<div key={boxIndex}
-			className={`link-box ${selectedBox === boxIndex ? 
-					"expanded" : ""}`}
-			onClick={() => handleBoxClick(boxIndex)}>
-			<h3>{box.title}</h3>+
-			<ul>
-			{box.items.map((link, linkIndex) => (
-				<li key={linkIndex}>
-				<a className={loadingLink && 
-					loadingLink.boxIndex === boxIndex && 
-					loadingLink.linkIndex === linkIndex 
-					? "loading" : ""}
-				onClick={(e) => handleLinkClick(
-					e, boxIndex, linkIndex, link)}>
-				{link.title}
-				</a>
-				</li>))}
-			</ul>
-			</div>
-			))}
-		</div>
-		);
-	};
-	export default Link;
-	
+import React, { useState,useEffect } from "react";
+import "./Link.css";
+const Link = () => {
+ const links = [
+ {
+   \\ Ein Haufen Links die fuers Studieren wichtig sind.
+    \\........................................
+ }];
+
+ useEffect(() => {
+  return () => {
+   setLoadingLink(null); // Setzt den Ladezustand zurueck, 
+   wenn die Komponente unmountet wird};}, []);
+   const [selectedBox, setSelectedBox] = useState(-1);
+   const [loadingLink, setLoadingLink] = useState(null); 
+   // Initialer State zu null
+   const handleBoxClick = (index) => {
+   if (selectedBox === index) {
+   	setSelectedBox(-1);} 
+   else {
+   	setSelectedBox(index);}};
+	const handleLinkClick = (e, boxIndex, linkIndex, link) => {
+	  e.stopPropagation();
+	  setLoadingLink({ boxIndex, linkIndex }); 
+	  // Setzt den Lade-Link auf das aktuelle Link-Objekt
+	  window.open(link.url, "_blank");
+	  setTimeout(() => {
+	   setLoadingLink(null); // Setzt den Lade-Link 
+	   nach einer Verzoegerung zurueck
+       }, 2000);};
+   
+  return (
+  <div className="link-collection">
+  {links.map((box, boxIndex) => (
+  	<div key={boxIndex}
+  	className={`link-box ${selectedBox === boxIndex ? 
+  	"expanded" : ""}`}
+    onClick={() => handleBoxClick(boxIndex)}>
+      <h3>{box.title}</h3>
+      <ul>
+      {box.items.map((link, linkIndex) => (
+       <li key={linkIndex}>
+       <a className={loadingLink && 
+       	loadingLink.boxIndex === boxIndex && 
+       	loadingLink.linkIndex === linkIndex 
+       	? "loading" : ""}
+       onClick={(e) => handleLinkClick(
+       	e, boxIndex, linkIndex, link)}>
+       {link.title}
+       </a></li>))}
+      </ul>
+      </div>))}
+	</div>);
+};
+export default Link;
+
 \end{lstlisting}
 
 Die Implementierung dieser Komponente ermöglicht eine bequeme und effiziente Darstellung von Linkgruppen. Die Struktur und das Verhalten der Komponenten sind klar und intuitiv, und der Einsatz von Statusverwaltung und Event-Handlern stellt sicher, dass die Komponenten korrekt auf Benutzerinteraktionen reagieren und  aktualisiert werden. Durch die Verwendung von React für diese Komponente ist sie wiederverwendbar und lässt sich leicht in andere Teile einer größeren Anwendung integrieren.
