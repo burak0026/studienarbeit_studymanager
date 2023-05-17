@@ -349,30 +349,38 @@ Zusammenfassend lässt sich sagen, dass React aufgrund seiner Flexibilität, Bel
 	\fbox{\includegraphics[width=0.30\textwidth]{images/docker}}
 \end{wrapfigure}
 
-Um die DHBW Star Webseite plattformunabhängig testen und betreiben können, entschieden wir uns für Docker. Dieser ist sowohl auf unseren Rechnern als auch auf dem Testserver installiert. Damit wurden Probleme, die durch unterschiedliche Betriebssysteme oder Softwareversionen entstehen könnten, vermieden.
+Docker ist eine open source Container basierte Virtualisierungssoftware von Docker.inc.
+Sie kann eine Software mit all ihren benötigten Abhängigkeiten (z.B. Bibliotheken) in ein Docker-Image packen. Dieses Image kann Docker unabhängig von der Plattform oder der vorhandenen Software in einem sogenannter Container(Sandbox) ausführen. Dadurch ist er von anderen Prozessen auf dem Host-System isoliert. Die Kommunikation zwischen den Containern läuft deswegen meistens über eine Netzwerk-API.
 
-\subsection{Was ist Docker? }
+Dies ermöglicht einen hohen Grad an Flexibilität, erhöht die Sicherheit und verhindert Probleme mit verschiedenen Versionen von Bibliotheken oder Software.
 
-
-Docker ist eine freie Container-basierte Virtualisierungs-Software unter der Apache-Lizenz.
-Sie kann eine Software mit all ihren benötigten Abhängigkeiten (z.B. Bibliotheken) in ein Containerimage packen. Dieses Image kann Docker unabhängig von der Plattform oder der vorhandenen Software ausführen. Dies ermöglicht einen hohen Grad an Flexibilität, erhöht die Sicherheit und verhindert Probleme mit verschiedenen Versionen von Bibliotheken.
-Jeder Container ist eine eigene Sandbox und somit isoliert und unabhängig von anderen Prozessen auf dem Host-System.
+\cite{dockerDummies}
+\cite{dockerOverview}
 
 \subsection{Docker-Daemon}
 Der Kern von Docker ist der Docker-Daemon. Er verwaltet die Container und wird per Docker-Engine ( API) gesteuert. Dazu gibt es verschiedene Programme, die Clients genannt werden. Je nach Aufgabe kann ein Client besser geeignet sein als ein anderer. Es muss sich aber nicht auf einen festgelegt werden. Auch die parallele Nutzung ist möglich. In diesem Projekt kommen Docker und Compose zum Einsatz.
+\cite{dockerDaemon}
+\cite{dockerDaemon}
 
 \subsection{Docker Images und Container}
-Um ein Programm in einem  Container laufen zu lassen, werden zwei Schritte benötigt. \\
+Ein Docker-Image bildet die Grundlage für jeden Container. Wie bei einem Bauplan besteht es aus einer Liste von Änderungen in einer festen Reihenfolge.
+
+Beim starten eines Containers werden diese Änderungen in dem virtuelle Dateisystem des Container ausgeführt. Somit kann ein Programm mit samt Daten und Bibliotheken in einem Container laufen.
+
+Für die Kommunikation hat Docker Conatiner-Netzwerke. Im Standartfall stellt Docker drei Netzwerke bereit und sofern nicht anders eingestellt, wird jeder Container in das Docker0 Netzwerk eingebunden. Damit er auch von außerhalb erreichbar ist, muss beim Start des Container eine Portweiterleitung angeben werden.
+
+In der Praxis ist der Ablauf folgendermaßen: \\
 1. Ein Docker-Image mit den Programm und dazugehörigen Daten erzeugen. \\
 2. Image als Container starten. \\
-Um ein Image zu erstellen wird meist ein Vorhandenes als Basis-Image verwendet. Dockerhub.com bietet eine Vielzahl an Images für alle möglichen Anwendungen an.
-In einer Datei mit den Namen Dockerfile kann mit \emph{FROM "imagename"} eins der Images einfach als Basis festgelegt werden. Danach können eigene Dateien kopiert oder Programme installiert bzw. ausgeführt werden. Diese Änderungen speichert einen virtuellen Dateisystem im erzeugten Image.
+Um ein Image zu erstellen wird meist ein Vorhandenes Docker-Image als Basis verwendet. Dockerhub.com bietet eine Vielzahl an Images für alle möglichen Anwendungen an.
+In einer Datei mit den Namen Dockerfile kann mit \emph{FROM "imagename"} eins der Images einfach als Basis festgelegt werden. Danach können eigene Dateien kopiert oder Programme installiert bzw. ausgeführt werden.
 
-Wenn ein Image gestartet wird nennt Docker dies einen Container.
-Beim Starten können noch Einstellungen festgelegt werden (z.B. Port Weiterleitung).
+Beim Starten eines Containers können Konfigurationen festgelegt werden (z.B. Portweiterleitung).
 Jedes Image kann beliebig oft als Container mit eigenen Einstellungen gestartet werden. So ist es möglich, das selbe Image mit unterschiedlicher Konfiguration gleichzeitig laufen zu lassen.
 
-\todo {Quelle: docs.docker.com }
+Zudem können auch Umgebungsvariablen definiert werden, die Docker beim Start des Containers übernimmt. Somit können Einstellungen und Daten für die Software im Container bereitgestellt werden, ohne das Docker-Image ändern zu müssen.
+
+\cite{dockerDummies}
 
 \subsection{Docker Compose }
 Gehören zu einer Anwendung oder einem Service mehrere Container so bietet der Client \emph{Docker Compose} die Möglichkeiten automatisch Images zu erzeugen und Container zu starten. Dieser muss meist erst installiert werden.
@@ -388,6 +396,9 @@ Für die Abstraktion werden allerdings mehr Ressourcen benötigt, da teilweise g
 
 Zudem kann das bauen eines Containers je nach Rechenleistung und Internetgeschwindigkeit einiges an Zeit in Anspruch nehmen. Das kann vor allem beim Entwickeln viel Zeit kosten, wenn zum Testen der Container mehrmals hintereinander neu gebaut werden muss.
 
+\cite{dockerDummies}
+\cite{dockerComposeOverview}
+
 \subsection{Docker unter Windows }
 Um Docker unter Windows benutzen zu können muss WSL2 (Windows Subsystem for Linux 2) installiert und aktiviert sein.
 In diesem läuft dann der Docker-Daemon.
@@ -396,6 +407,7 @@ Docker Desktop ist ein Client mit Grafischer Oberfläche. Dieser steuert den Doc
 
 Nach dem Start zeigt er die Container welche Docker gespeichert hat mit Namen, Images, Ports und wann er zuletzt gestartet wurde. (Abb: \ref{fig-docker-desktop})
 Mit einem Klick auf den Container können unter anderem seine Logs oder ein Terminal im Container erreicht werden, welche bei der Fehlersuche ein sehr hilfreich sein können.
+\cite{dockerDesktop}
 
 \begin{figure}[htbp]
 	\centering
