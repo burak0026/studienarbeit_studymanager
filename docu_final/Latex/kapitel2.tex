@@ -99,7 +99,7 @@ Der Zustand ist ein beobachtbares Objekt und kann somit verändert werden. In Re
 
 Eine sorgfältige Verwaltung des Zustands in einer React-Anwendung ist wichtig, um Fehler zu vermeiden und die Leistung zu optimieren. Die Organisation des Zustands und die Datenfluss zwischen den Komponenten sollten gut durchdacht sein, um überflüssigen oder doppelten Zustand zu vermeiden \cite{ReactManagingState}.\\
 Das folgende Beispiel zeigt, wie der Zustand in React-Komponenten implementiert werden kann:
-
+\\
 \begin{lstlisting}[language=vhdl,
 	frame=single,           % Ein Rahmen um den Code
 	framexleftmargin=15pt,  % Rahmen link von den Zahlen
@@ -223,8 +223,8 @@ In JSX werden Komponenten als Tags definiert, die HTML-Tags ähneln, mit einigen
 JSX bietet auch die Möglichkeit, JavaScript-Ausdrücke in die Komponentenstruktur einzubetten, indem sie in geschweiften Klammern {} eingeschlossen werden. Diese Ausdrücke können Variablen, Funktionen oder Berechnungen enthalten, die zur Laufzeit ausgewertet werden.
 
 Ein weiterer Aspekt von JSX ist das Übergeben von Daten an Komponenten mit Hilfe von Eigenschaften. Props können in JSX wie HTML-Attribute definiert werden und schließen bei JavaScript-Ausdrücken den Wert in geschweiften Klammern ein\cite{deLegacyReactjs}. Innerhalb der Komponente sind diese Props über this.props zugänglich.\\
-Ein Beispiel für eine React-Komponente mit JSX: 
-
+Ein Beispiel für eine React-Komponente mit JSX:
+\\
 \begin{lstlisting}[language=vhdl,
 	frame=single,           % Ein Rahmen um den Code
 	framexleftmargin=15pt,  % Rahmen link von den Zahlen
@@ -419,12 +419,11 @@ Ein Docker-Image bildet die Grundlage für jeden Container. Wie bei einem Baupla
 
 Beim Starten eines Containers werden diese Änderungen in dem virtuelle Dateisystem des Container ausgeführt. Somit kann ein Programm mitsamt Daten und Bibliotheken in einem Container laufen.
 
-Für die Kommunikation hat Docker Container-Netzwerke. Im Standardfall stellt Docker drei Netzwerke bereit und sofern nicht anders eingestellt, wird jeder Container in das Docker0 Netzwerk eingebunden. Damit er auch von außerhalb erreichbar ist, muss beim Start des Containers eine Portweiterleitung angegeben werden.
-
+Für die Kommunikation hat Docker Container-Netzwerke. Im Standardfall stellt Docker drei Netzwerke bereit und sofern nicht anders eingestellt, wird jeder Container in das \emph{Docker0} Netzwerk eingebunden. Damit er auch von außerhalb erreichbar ist, muss beim Start des Containers eine Portweiterleitung angegeben werden.\\
 In der Praxis ist der Ablauf folgendermaßen: \\
 1. Ein Docker-Image mit dem Programm und dazugehörigen Daten erzeugen. \\
 2. Image als Container starten. \\
-Um ein Image zu erstellen wird meist ein vorhandenes Docker-Image als Basis verwendet. Dockerhub.com bietet eine Vielzahl an Images für alle möglichen Anwendungen an.
+Um ein Image zu erstellen wird meist ein vorhandenes Docker-Image als Basis verwendet. \emph{www.dockerhub.com} bietet eine Vielzahl an Images für alle möglichen Anwendungen an.
 In einer Datei mit den Namen Dockerfile kann mit \emph{FROM "`imagename"'} eins der Images einfach als Basis festgelegt werden. Danach können eigene Dateien kopiert oder Programme installiert bzw. ausgeführt werden.
 
 Beim Starten eines Containers können Konfigurationen festgelegt werden (z.B. Portweiterleitung).
@@ -458,7 +457,7 @@ In diesem läuft dann der Docker-Daemon.
 Docker Desktop ist ein Client mit Grafischer Oberfläche. Dieser steuert den Docker-Dienst um Container zu starten oder zu stoppen.
 
 Nach dem Start zeigt er die Container welche Docker gespeichert hat mit Namen, Images, Ports und wann er zuletzt gestartet wurde. (Abb: \ref{fig-docker-desktop})
-Mit einem Klick auf den Container können unter anderem seine Logs oder ein Terminal im Container erreicht werden, welche bei der Fehlersuche ein sehr hilfreich sein können.
+Mit einem Klick auf den Container können unter anderem seine Logs oder ein Terminal im Container erreicht werden, welche bei der Fehlersuche sehr hilfreich sein können.
 \cite{dockerDesktop}
 
 \begin{figure}[htbp]

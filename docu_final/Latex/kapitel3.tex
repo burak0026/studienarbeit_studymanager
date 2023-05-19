@@ -1,14 +1,14 @@
 \chapter{Umsetzung der Webseite}
-Die Digitalisierung hat enorme Auswirkungen auf Bildung und Lehre, und Hochschulen bilden da keine Ausnahmen. Die DHBW Karlsruhe setzt sich, wie viele andere Bildungseinrichtungen auch, für die Nutzung digitaler Technologien ein, um das Lernen und die Bewältigung des Hochschullebens zu erleichtern. In diesem Zusammenhang entstand die Idee einer modernen Webseite, die speziell auf die Bedürfnisse der Studierenden der DHBW Karlsruhe zugeschnitten ist. Diese moderne Webseite soll die wichtigsten Informationen, die Studierende benötigen, auf effiziente und benutzerfreundliche Weise zusammenfassen.
+Die Digitalisierung hat enorme Auswirkungen auf Bildung und Lehre, und Hochschulen bilden da keine Ausnahmen. Die DHBW Karlsruhe setzt sich, wie viele andere Bildungseinrichtungen auch, für die Nutzung digitaler Technologien ein, um das Lernen und die Bewältigung des Hochschullebens zu erleichtern.
+
+In diesem Zusammenhang entstand die Idee einer modernen Webseite, die speziell auf die Bedürfnisse der Studierenden der DHBW Karlsruhe zugeschnitten ist. Diese moderne Webseite soll die wichtigsten Informationen, die Studierende benötigen, auf effiziente und benutzerfreundliche Weise zusammenfassen.
 
 \section{Ziel der Webseite}
 Das Hauptziel der App besteht darin, den Informationsfluss zu optimieren, und den Zugriff auf relevante Daten zu erleichtern. Ob Mensa-Speiseplan, aktuelle Vorlesung, Wochenplan oder eine Ansammlung von Links. Die Webseite sollte all diese Informationen an einem zentralen Ort bereit stellen. Darüber hinaus möchten wir eine intuitive und ansprechende Benutzererfahrung bieten, die den Benutzern den Zugriff und die Navigation erleichtert.
 \newpage
 
 \subsection{Wissenschaftliche Erkenntnisse} 
-Zu den drei Hauptinformationen, die den Nutzern der DHBW Karlsruhe am wichtigsten sind, gehören Speisepläne, Stundenpläne und eine Sammlung nützlicher Links.\\
-Der Kantinenplanung kommt eine große Bedeutung zu, da sie es Studierenden der DHBW Karlsruhe ermöglicht über den Tagesplan Bescheid zu wissen.\\
-Auch Stundenpläne spielen eine wichtige Rolle, da sie den Studierenden helfen, ihre Kurse und Vorlesungen zu überschauen und einen Überblick über ihre wöchentlichen Aktivitäten zu erhalten.
+Zu den drei Hauptinformationen, die den Nutzern der DHBW Karlsruhe am wichtigsten sind, gehören Speisepläne, Stundenpläne und eine Sammlung nützlicher Links. Der Kantinenplanung kommt eine große Bedeutung zu, da sie es Studierenden der DHBW Karlsruhe ermöglicht über den Tagesplan Bescheid zu wissen. Auch Stundenpläne spielen eine wichtige Rolle, da sie den Studierenden helfen, ihre Kurse und Vorlesungen zu überschauen und einen Überblick über ihre wöchentlichen Aktivitäten zu erhalten.
 
 Darüber hinaus ist die Sammlung nützlicher Links eine wertvolle Ressource. Über diese Links erhalten Studierende einen einfachen Zugriff auf wichtige Online-Ressourcen und -Dienste, die sie regelmäßig nutzen. Dies ermöglicht einen schnellen Zugriff auf Informationen und unterstützende Materialien im Zusammenhang mit ihren Lernbedürfnissen.
  
@@ -111,7 +111,7 @@ function Homepage() {
 	
 \end{lstlisting}
 
-Die Homepage-Implementierung der DHBW Star-Webseite basiert auf der Nutzung grundlegender und erweiterter Funktionen der React-Bibliothek zur Erstellung der Benutzeroberfläche. Dieser Code verwendet React-Funktionen und Hooks, um eine dynamische und reaktionsfähige Benutzeroberfläche zu erstellen.
+Die Homepage-Implementierung der DHBW-Star-Webseite basiert auf der Nutzung grundlegender und erweiterter Funktionen der React-Bibliothek zur Erstellung der Benutzeroberfläche. Dieser Code verwendet React-Funktionen und Hooks, um eine dynamische und reaktionsfähige Benutzeroberfläche zu erstellen.
 
 Die Hauptkomponente \emph{Homepage} wird als funktionale Komponente definiert. Funktionale Komponenten sind in modernen React-Anwendungen weit verbreitet, da sie einfacher zu lesen und zu testen sind und React-Hooks verwenden können.
 
@@ -133,7 +133,7 @@ In dieser Abbildung wird der Ablauf der Komponenten visualisiert:
 
 \subsection{Food}
 \subsubsection{Konzept}
-Die Food-Komponente der DHBW Star-Webseite ist ein wichtiger Teil der Anwendung, die Speisepläne anzeigt.
+Die Food-Komponente der DHBW-Star-Webseite ist ein wichtiger Teil der Anwendung, die Speisepläne anzeigt.
 Die Daten werden von einer Mensa-APi abgerufen, die in einem Docker-Container läuft. Dieser Vorgang wird im Kapitel Docker näher beschrieben.
 
 Der default-Speiseplan ist immer der aktuelle Tag, zu dem werden für die nächsten zehn Tage die Speisepläne angezeigt. Außer an Wochenenden, da ist die Mensa geschlossen.
@@ -159,7 +159,7 @@ Zudem ist in der nächsten Abbildung die Webseite der Food-Komponente abgebildet
 	\caption{Food Website}
 \end{figure}
 \subsubsection{Implementierung}
-Die Implementierung der Foodkomponente der DHBW Star-Webseite basiert auf der Verwendung grundlegender und erweiterter Funktionen der React- und \emph{Axios}-Bibliotheken zur Verarbeitung von HTTP-Anfragen.
+Die Implementierung der Foodkomponente der DHBW-Star-Webseite basiert auf der Verwendung grundlegender und erweiterter Funktionen der React- und \emph{Axios}-Bibliotheken zur Verarbeitung von HTTP-Anfragen.
 
 Die \emph{Food}-Komponente wird als funktionelle Komponenten definiert und nutzt React-Hooks, um den internen Zustand und Nebenwirkungen zu verwalten. Mit dem Hook \emph{useState} werden drei Statusvariablen definiert: \emph{dates}, \emph{activeTab} und \emph{meals}.
 
@@ -519,7 +519,7 @@ Der Proxy-Server ist so konzipiert, dass er die Cross-Origin Resource Sharing (C
 
 Dies ist wichtig, um das Risiko von Cross-Site Request Forgery (CSRF) und anderen Arten von Angriffen zu verringern, die darauf abzielen, die Identität eines Benutzers zu kapern. Sie verhindern den Zugriff von einer Domäne (Ursprung) auf Ressourcen in einer anderen Domäne, sofern dies nicht ausdrücklich erlaubt ist \cite{ionos-de}.
 
-In diesem speziellen Fall verfügt die API\\ \emph{http://rapla.dhbw-karlsruhe.de/rapla?page=iCalanduser=vollmerandfile=tinf20b3} über eine CORS-Richtlinie, die Clients den direkten Zugriff auf Kalenderdaten verbietet. Dies geschieht aus verschiedenen Gründen, unter anderem zum Schutz der Datenintegrität und zur Verhinderung bestimmter Arten von Angriffen\cite{crashtest-security-com}.
+In diesem speziellen Fall verfügt die API\\ \emph{http://rapla.dhbw-karlsruhe.de/rapla?page=iCalanduser=vollmerandfile=tinf20b3} über eine CORS-Richtlinie, die Clients den direkten Zugriff auf Kalenderdaten verbietet. Dies geschieht aus verschiedenen Gründen, unter anderem zum Schutz der Datenintegrität und zur Verhinderung bestimmter Arten von Angriffen\cite{crashtestsecuritycom}.
 
 Bei dem Proxy-Server von DHBW-Star erscheint die Umgehung der CORS-Richtlinie gerechtfertigt und sinnvoll. Der Hauptgrund dafür ist, dass die Anwendung für ihre Funktion auf Daten der API\\ \emph{http://rapla.dhbw-karlsruhe.de/rapla?page=iCalanduser=vollmerandfile=tinf20b3} angewiesen ist. Wenn der direkte Zugriff auf diese Daten durch die CORS-Richtlinie der API verboten ist, kann die Anwendung ihre Funktion nicht ausführen.
 
@@ -858,7 +858,7 @@ Damit die Mensa API und React zusammen starten, wird die \emph{compose.yaml} Dat
 	- MENSA_CORS_ALLOWORIGIN=*
 \end{lstlisting}
 
-Für den Service \emph{react-app} (DHBW Star) wird mit \emph{build} die oben beschrieben Dockerfiel Datei angeben. Somit baut der Befehl \emph{docker compose --build} ein neue Image mit dem React Projekt.
+Für den Service \emph{react-app} (DHBW-Star) wird mit \emph{build} die oben beschrieben Dockerfiel Datei angeben. Somit baut der Befehl \emph{docker compose --build} ein neue Image mit dem React Projekt.
 
 Der \emph{tags} gibt dem Container einen eindeutigen Namen.
 Mit \emph{ports} werden die Ports vom Proxy(3002) und React (3003) nach außen freigegeben.
@@ -892,5 +892,5 @@ Per github.com wird das Projekt auf den Server kopiert und die \emph{.env} Datei
 Damit die Container unter ihrer Subdomain erreichbar sind, müssen diese in der Nginx konfiguriert werden. In der Datei \emph{.../sites-enabled/star.conf} wird für jeden Service mit \emph{proxy\_pass} eine Weiterleitung eingerichtet.
 Da auf dem Server bereits andere Webdiensts laufen, ist Startseite unter der Subdomain \emph{star.Domain} erreichbar. Mit \emph{Certbot} werden noch SSL Zertifikate für alle Subdomains erstellt und automatisch eingerichtet.
 
-Nach dem Neustart von Nginx, steht DHBW Star für alle Tester zur Verfügung.
+Nach dem Neustart von Nginx, steht DHBW-Star für alle Tester zur Verfügung.
 
