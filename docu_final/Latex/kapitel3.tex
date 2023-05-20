@@ -32,7 +32,7 @@ Das Hauptproblem des Informationsangebots der DHBW Karlsruhe besteht in der Frag
 Als mobile Informationsplattform konzipiert, zielt die Webseite darauf ab, die Informationsbeschaffung für Studierende der DHBW Karlsruhe zu optimieren und zu zentralisieren. Durch die Bündelung einer Vielzahl zusammengehöriger Dienste und Informationen und deren Darstellung auf einer intuitiven Benutzeroberfläche wollen wir den Informationsfluss optimieren und gleichzeitig einen hohen Komfort gewährleisten.
 
 \subsection{Benutzeroberfläche}
-Das Design der Benutzeroberfläche folgt den Designprinzipien Usability und User Experience (UX) mit dem Ziel, intuitive und benutzerfreundliche Anwendungen zu entwickeln\cite{hartmann2017usability}. Diese Prinzipien sind für die Erstellung effizienter und effektiver Anwendungen, die die Benutzerzufriedenheit erhöhen, von wesentlicher Bedeutung\cite{14all}. Es orientiert sich an zeitgenössischen Designstandards und ist klar und minimalistisch gestaltet, da es dazu beiträgt, dass die Benutzeroberfläche übersichtlich und selbsterklärend bleibt \cite{massiveart}.
+Das Design der Benutzeroberfläche folgt den Designprinzipien Usability und User Experience (UX) mit dem Ziel, intuitive und benutzerfreundliche Anwendungen zu entwickeln \cite{hartmann2017usability}. Diese Prinzipien sind für die Erstellung effizienter und effektiver Anwendungen, die die Benutzerzufriedenheit erhöhen, von wesentlicher Bedeutung \cite{14all}. Es orientiert sich an zeitgenössischen Designstandards und ist klar und minimalistisch gestaltet, da es dazu beiträgt, dass die Benutzeroberfläche übersichtlich und selbsterklärend bleibt \cite{massiveart}.
 
 Die wichtigsten Informationen und Dienste wie Speisepläne, Fahrpläne und Links sind direkt über die Startseite der Webseite zugänglich und werden mit sofort erkennbarer Ikonographie angezeigt..Dies erleichtert Benutzern die Navigation auf Ihrer Website und das Auffinden der benötigten Informationen. Durch die Verwendung von Ikonografie zur Darstellung dieser Dienste sind diese sofort erkennbar und lassen sich in die Anwendung einfacher verwenden \cite{99designs}. 
 
@@ -150,7 +150,7 @@ Der ursprüngliche Plan war, die \emph{OpenMensa} API zu verwenden. Diese API bi
 
 Allerdings stellt sich heraus, dass die Daten für die Mensa Erzbergerstraße nicht aktuell sind. Die neuesten verfügbaren Daten beziehen sich auf Juli 2022. Dies reicht für unsere Zwecke nicht aus, da wir aktuelle und genaue Daten benötigen. \cite{openmensa-canteen33}
 
-Als Alternative wurde sich für die KA-Mensa-API entschieden. Diese API liefert aktuellere und genauere Daten. Darüber hinaus wird ein Docker-Image mitgeliefert, sodass die API nahtlos in die bestehende Docker-Infrastruktur integriert werden kann.\cite{ka-mensa-api}
+Als Alternative wurde sich für die KA-Mensa-API entschieden. Diese API liefert aktuellere und genauere Daten. Darüber hinaus wird ein Docker-Image mitgeliefert, sodass die API nahtlos in die bestehende Docker-Infrastruktur integriert werden kann. \cite{ka-mensa-api}
 
 Da Docker bereits für andere Teile der Anwendung genutzt wird, ist die Integration der KA-Mensa API in die bestehende Docker-Infrastruktur ein logischer und effizienter Schritt. Dadurch konnte die Food-Komponente der Website stets aktuelle und genaue Daten anzeigen, unterstützt durch die Docker-Technologie.
 In diesem Programmablaufplan ist die Food-Komponente visuell erklärt.
@@ -528,7 +528,7 @@ Der Proxy-Server ist so konzipiert, dass er die Cross-Origin Resource Sharing (C
 
 Dies ist wichtig, um das Risiko von Cross-Site Request Forgery (CSRF) und anderen Arten von Angriffen zu verringern, die darauf abzielen, die Identität eines Benutzers zu kapern. Sie verhindern den Zugriff von einer Domäne (Ursprung) auf Ressourcen in einer anderen Domäne, sofern dies nicht ausdrücklich erlaubt ist \cite{ionos-de}.
 
-In diesem speziellen Fall verfügt die API\\ \emph{http://rapla.dhbw-karlsruhe.de/rapla?page=iCalanduser=vollmerandfile=tinf20b3} über eine CORS-Richtlinie, die Clients den direkten Zugriff auf Kalenderdaten verbietet. Dies geschieht aus verschiedenen Gründen, unter anderem zum Schutz der Datenintegrität und zur Verhinderung bestimmter Arten von Angriffen\cite{crashtestsecuritycom}.
+In diesem speziellen Fall verfügt die API\\ \emph{http://rapla.dhbw-karlsruhe.de/rapla?page=iCalanduser=vollmerandfile=tinf20b3} über eine CORS-Richtlinie, die Clients den direkten Zugriff auf Kalenderdaten verbietet. Dies geschieht aus verschiedenen Gründen, unter anderem zum Schutz der Datenintegrität und zur Verhinderung bestimmter Arten von Angriffen \cite{crashtestsecuritycom}.
 
 Bei dem Proxy-Server von DHBW-Star erscheint die Umgehung der CORS-Richtlinie gerechtfertigt und sinnvoll. Der Hauptgrund dafür ist, dass die Anwendung für ihre Funktion auf Daten der API\\ \emph{http://rapla.dhbw-karlsruhe.de/rapla?page=iCalanduser=vollmerandfile=tinf20b3} angewiesen ist. Wenn der direkte Zugriff auf diese Daten durch die CORS-Richtlinie der API verboten ist, kann die Anwendung ihre Funktion nicht ausführen.
 
