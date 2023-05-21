@@ -36,10 +36,10 @@ Zusammenfassend ist React eine wertvolle Fähigkeit für Webentwickler, da es ei
 
 \begin{figure}[htbp]
 	\centering
-	\fbox{\includegraphics[height=0.3\textheight]{images/react-logo}}
+	\fbox{\includegraphics[height=0.2\textheight]{images/react-logo}}
 	\caption{React-Logo}
 \end{figure}
-
+\newpage
 \subsection{Grundlagen über React}
 \subsubsection{Virtual DOM}
 Das Virtual DOM ist ein zentrales Konzept von React, einer JavaScript-Programmbibliothek zur Erstellung von webbasierten Benutzeroberflächen \cite{ReactWikipedia}. Es handelt sich dabei um eine leichtgewichtige JavaScript-Darstellung des Document Object Model (DOM), die in deklarativen Web-Frameworks wie React, Vue.js und Elm verwendet wird \cite{VueJsAdesso}. Das Virtual DOM ermöglicht es React, minimale DOM-Operationen auszuführen, wenn die Benutzeroberfläche neu gerendert wird. Im Gegensatz zum tatsächlichen DOM ist das Virtual DOM eine Art abstrakte Kopie, die deutlich kleiner ist und auf das Nötigste an Informationen beschränkt. \cite{ReactWikipedia}
@@ -53,7 +53,7 @@ Das folgende Bild illustriert den Unterschied zwischen dem tatsächlichen DOM un
 	\fbox{\includegraphics[height=0.3\textheight]{images/virtualDom}}
 	\caption{Virtual-DOM}
 \end{figure}
-
+\newpage
 Das Bild zeigt schematisch, wie das Virtual DOM in React funktioniert. Zunächst wird eine virtuelle Darstellung des DOMs in Form eines Baumes erstellt. Bei Änderungen an der Benutzeroberfläche wird ein neuer Baum erstellt und mit dem vorherigen Baum verglichen. Dabei werden die Unterschiede zwischen den beiden Bäumen ermittelt. Anschließend werden nur die geänderten Elemente im tatsächlichen DOM aktualisiert. Dieser Prozess wird als Reconciliation bezeichnet \cite{ReactVirtualDOM}.
 
 \subsubsection{Komponenten und Props}
@@ -61,9 +61,7 @@ React ist eine Bibliothek für die Entwicklung von Benutzeroberflächen, die auf
 
 Props (kurz für "`Properties"') sind ein wichtiger Mechanismus zur Konfiguration von React-Komponenten. Sie dienen zum Übergeben von Daten von einer Komponente zur anderen und werden als Objekt an die Komponente übergeben. Innerhalb der Komponente können Props als Parameter verwendet werden. Im Gegensatz zum State, der zur Änderung der Benutzeroberfläche innerhalb einer Komponente verwendet wird, sind Props schreibgeschützt und können nicht direkt geändert werden. Durch das Verwenden von Props können Komponenten einfach wiederverwendet werden, indem sie in verschiedenen Kontexten mit unterschiedlichen Props konfiguriert werden \cite{ReactComponentsAndProps}.
 
-Ein Beispiel für eine React-Komponente mit Props ist die Funktion \emph{Greeting}, die einen Gruß mit dem Namen des Benutzers anzeigt. Der Name wird als Prop an die Komponente übergeben und innerhalb der Funktion als Parameter verwendet.
-
-\newpage
+Ein Beispiel für eine React-Komponente mit Props ist die Funktion \emph{Greeting}, die einen Gruß mit dem Namen des Benutzers anzeigt. Der Name wird als Prop an die Komponente übergeben und innerhalb der Funktion als Parameter verwendet.\\
 Hier ist das Codebeispiel:
 \begin{lstlisting}[language=vhdl,
 	frame=single,           % Ein Rahmen um den Code
@@ -234,10 +232,7 @@ Ein Beispiel für eine React-Komponente mit JSX:
 	caption={Beispiel JSX }]
 class Welcome extends React.Component {
         render() {
-        	return <h1>Hallo, {this.props.name}!</h1>;
-        }
-    }
-
+        	return <h1>Hallo, {this.props.name}!</h1>;}}
     ReactDOM.render(
     <Welcome name="Max" />,
     document.getElementById('root')
@@ -259,7 +254,8 @@ Die folgende Abbildung zeigt das Datenmanagement in Redux:
 	\centering
 	\fbox{\includegraphics[height=0.3\textheight]{images/redux}}
 	\caption{Redux-Datenfluss}
-\end{figure}\\
+\end{figure}
+\newpage
 Der Zustand der Anwendung wird im Store gespeichert, der die Datenstruktur und die aktuellen Daten enthält. Die Komponenten erhalten den Zugriff auf den Zustand über das Connect-Modul, das es ihnen ermöglicht, auf die Daten zuzugreifen und sie in ihre Eigenschaften zu übertragen. Wenn ein Ereignis eintritt, das den Zustand ändert, wird eine Action ausgelöst, die eine Reducer-Funktion aufruft, um den Zustand im Store zu aktualisieren.
 
 Redux eignet sich besonders für Anwendungen mit vielen Komponenten und komplexen Datenstrukturen. Der Hauptvorteil von Redux besteht darin, dass das Datenflussmanagement einheitlich und leicht verständlich ist. Dies vereinfacht die Anwendungswartung erheblich, da Entwickler immer genau wissen, wo ihr Anwendungsstatus gespeichert ist und wie sie darauf zugreifen können.
@@ -270,7 +266,8 @@ Die folgende Abbildung zeigt den Datenfluss in Context API:
 	\centering
 	\fbox{\includegraphics[height=0.3\textheight]{images/context-api}}
 	\caption{ContextApi-Datenfluss}
-\end{figure}\\
+\end{figure}
+\newpage
 Der Zustand wird in einer höheren Komponente gespeichert und durch die Prop-Drilling-Technik an untergeordnete Komponenten übermittelt. Dadurch können untergeordnete Komponenten den Zustand der höheren Komponenten ändern und somit auch den Zustand der Anwendung beeinflussen.
 
 Die Kontext-API eignet sich am besten für Anwendungen, bei denen der Zustand nicht zu komplex und die Anzahl der Komponenten begrenzt ist. Der Hauptvorteil der Kontext-API besteht darin, dass sie eine einfachere und schnellere Möglichkeit bietet, auf den Status zuzugreifen, ohne einen globalen Speicher einrichten und verwalten zu müssen. \cite{scalablepath}
@@ -332,6 +329,7 @@ Das Testen von React-Anwendungen ist ein wichtiger Aspekt, um die Codequalität 
 	\fbox{\includegraphics[height=0.3\textheight]{images/pyramid}}
 	\caption{Test Pyramid}
 \end{figure}
+\newpage
 Die oben abgebildete Testpyramide ist ein Konzept, welches zur Erstellung verschiedener Testmethoden hilft.Dazu gehören End-to-End-Tests (E2E), Integrationstests und Komponententests (Unit-Tests). Unit-Tests werden für kleine, isolierte Codeblöcke wie einzelne Funktionen oder Komponenten verwendet und konzentrieren sich auf das Testen von Teilaspekten der Anwendung.
 
 Ein beliebtes Tool zum Testen von React-Anwendungen ist die React Testing Library (RTL). RTL konzentriert sich darauf, die Komponente aus der Sicht des Endbenutzers zu testen, anstatt die Implementierung und Logik der zugrundeliegenden React-Komponente zu validieren. Auf diese Weise können Entwickler sicherstellen, dass ihre Anwendungen für ihre Benutzer wie erwartet funktionieren. \cite{react-test-runebook}
@@ -393,7 +391,7 @@ React hat sich als eine der beliebtesten JavaScript-Bibliotheken etabliert und b
 Die Weiterentwicklung von React zeigt deutlich, dass der Trend zur Verwendung von React Hooks weiter zunimmt. Sie bieten eine einfachere und effizientere Möglichkeit zur Erstellung von React-Komponenten und werden bereits von vielen Unternehmen in der Produktion eingesetzt. Es wird erwartet, dass dieser Trend die Zukunft der React-Entwicklung prägen wird. React lebt in einem dynamischen Ökosystem und interagiert mit anderen Technologien und Frameworks. Neuere Technologien wie Svelte verfolgen einen anderen Ansatz bei der Nutzung des virtuellen DOM und könnten zu zukünftigen Verbesserungen und Änderungen an React führen.
 
 Zusammenfassend lässt sich sagen, dass React aufgrund seiner Flexibilität, Beliebtheit und aktiven Community eine starke Position in der Zukunft der Webentwicklung einnehmen könnte. Es wird erwartet, dass React seine Rolle als Branchenführer beibehält und weiterhin innovative Lösungen für die Entwicklung von Benutzeroberflächen bereit stellt.
-
+\newpage
 \section{Docker}
 
 \begin{wrapfigure}{r}{0.4\textwidth}
